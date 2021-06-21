@@ -12,9 +12,9 @@ Output:
 1, 1, 2, 3, 5, 8,
 1, 1, 2, 3, 5, 8, 13
 
-Input to each recursive function: a pair of numbers, the last two numbers of the sequence that was just produced.
+Input to each recursive call: a pair of numbers, the last two numbers of the sequence that was just produced.
 
-Output of each recursive function: a sequence of fibonacci numbers until the nth iteration.
+Output of each recursive call: a sequence of fibonacci numbers until the nth iteration.
 
 
 findNextFib(num1, num2) {

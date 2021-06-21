@@ -1,0 +1,23 @@
+7. Factorial
+Write a recursive function that finds the factorial of a given number. The factorial of a number can be found by multiplying that number by each number between itself and 1. For example, the factorial of 5 is 5 * 4 * 3 * 2 * 1 = 120.
+
+Input: number (5)
+
+Output: number (120)
+
+Input of each recursive call: the number minus 1.
+
+Output: the input *
+
+
+const factorial = function(n) {
+    if (n === 0) return 1;
+    return n * factorial(n-1);
+}
+
+5 * factorial(4) = 5 *
+4 * factorial(3) = 4 *
+3 * factorial(2) = 3 *
+2 * factorial(1) = 2 *
+1 * factorial(0) = 1 *
+
