@@ -1,0 +1,21 @@
+5. String Splitter
+Write a recursive function that splits a string based on a separator (similar to String.prototype.split). Don't use JS array's split function to solve this problem.
+
+Input: 02/20/2020
+Output: ["02", "20", "2020"]
+
+Input to each recursive call: the remaining characters in the string after the separator has been removed.
+
+Output of each recursive call: an array with each element being a string. Each string element is a set of adjacent characters before the separator.
+
+stringSplitter(str, sep) {
+    let array = [];
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === sep) {
+            remove the separator;
+            [].push(str.substring(0, i-1));
+            stringSplitter(str.substring(i, length-1))
+        }
+        return [].push(str)
+    }
+}
