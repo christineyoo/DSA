@@ -10,3 +10,9 @@ powerCalculator(b, e) {
     }
     return b ** e;
 }
+
+Input: base (b) and exponent (e)
+
+Output: number
+
+Not seeing the recursive part?

@@ -1,0 +1,16 @@
+3. Reverse String
+Write a function that reverses a string. Take a string as input, reverse the string, and return the new string.
+
+Input: string ("pizza")
+
+Output: string with reversed order of characters ("azzip")
+
+Input to each recursive call: a single character, specifically the last character. Then the second to last character. Then the third to last character... etc.
+
+Output of each recursive call: a concatenated string of each input of each recursive call.
+Example:
+"a"
+"a" + "z" = "az"
+"az" + "z" = "azz"
+"azz" + "i" = "azzi"
+"azzi" + "p" = "azzip"
