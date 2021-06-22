@@ -1,0 +1,13 @@
+2. Even or odd
+What is the Big O of the following algorithm? Explain your answer
+
+function isEven(value) {
+    if (value % 2 === 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+ANSWER: I think the Big O for this one is constant time O(1) because whether the number is small like 2 or large like 2002, the response time is the same because it's just a simple calculation (mod 2).
