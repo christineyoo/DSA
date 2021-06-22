@@ -12,3 +12,5 @@ All sheep jumped over the fence
 Input to each recursive call: number (one less than the previous number)
 
 Output of each recursive call: <number - 1>: Another sheep jumps over the fence
+
+The time complexity for this one is linear because the size of the input and the running time is directly proportional. 2 inputs => 2 time units, 4 inputs => 4 time units

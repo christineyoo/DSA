@@ -19,3 +19,5 @@ stringSplitter(str, sep) {
         return [].push(str)
     }
 }
+
+The time complexity for this algorithm is linear because if the number of separators present in a string doubles, then the running time also doubles. There is a direct proportion.

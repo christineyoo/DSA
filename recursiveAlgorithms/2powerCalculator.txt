@@ -16,3 +16,5 @@ Input: base (b) and exponent (e)
 Output: number
 
 Not seeing the recursive part?
+
+The time complexity for this one is constant because it's just a simple calculation of taking the base and raising it to the e power. b and e can be any values and it will take the same amount of time.

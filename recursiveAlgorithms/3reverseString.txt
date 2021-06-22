@@ -14,3 +14,5 @@ Example:
 "az" + "z" = "azz"
 "azz" + "i" = "azzi"
 "azzi" + "p" = "azzip"
+
+The time complexity for this one is linear because 5 inputs => 5 time units. 10 inputs => 10 time units.

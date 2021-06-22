@@ -22,3 +22,5 @@ Calculate the nth triangular number. A triangular number counts the objects that
  5 + 4 + 3 + 
  5 + 4 + 3 + 2 +
  1 +
+
+ The time complexity for this algorithm is polynomial time because 1 input => 1 time unit. 2 inputs => 3 time units. 3 inputs => 6 time units. It's not growing as much as exponential, but it's not exactly doubling either.

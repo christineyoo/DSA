@@ -21,3 +21,4 @@ const factorial = function(n) {
 2 * factorial(1) = 2 *
 1 * factorial(0) = 1 *
 
+The time complexity is linear because there is a direct proportion between input size and running time. 
