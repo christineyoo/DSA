@@ -1,0 +1,11 @@
+4. Doubler
+What is the Big O of the following algorithm? Explain your answer
+
+function doubleArrayValues(array) {
+    for (let i = 0; i < array.length; i++) {
+        array[i] *= 2;
+    }
+    return array;
+}
+
+ANSWER: I think the Big O for this is linear time O(n) because the running time is directly proportional to the size of the input. So if there are 3 elements in the array, it will take 3 time units. If there are 6 elements in the array, it will take 6 time units since each element is getting multiplied by 2.
