@@ -1,0 +1,21 @@
+7. Compute the sequence
+What does the following algorithm do? What is its runtime complexity? Explain your answer
+
+function compute(num) {
+    let result = [];
+    for (let i = 1; i <= num; i++) {
+
+        if (i === 1) {
+            result.push(0);
+        }
+        else if (i === 2) {
+            result.push(1);
+        }
+        else {
+            result.push(result[i - 2] + result[i - 3]);
+        }
+    }
+    return result;
+}
+
+ANSWER: The following algorithm creates an array of numbers that follow the fibonacci sequence. I think its runtime complexity is linear time because there is a direct proportion between the run time and size of the input. If num=5, there would be 5 iterations through the for loop. If num=10, there would be 10 iterations through the loop.
