@@ -1,0 +1,9 @@
+1. What is the Big O for this?
+1) Determine the Big O for the following algorithm: You are sitting in a room with 15 people. You want to find a playmate for your dog, preferably of the same breed. So you want to know if anyone out of the 15 people have the same breed as your dog. You stand up and yell out, who here has a golden retriever and would like to be a playdate for my golden. Someone yells - "I do, be happy to bring him over"
+
+ANSWER: I think the Big O for this is constant time O(1) because I'm yelling out a question that applies to the entire crowd. Whether there are 5 people in the room or 15, it takes the same amount of time to get a response.
+
+
+2) Determine the Big O for the following algorithm: You are sitting in a room with 15 people. You want to find a playmate for your dog who is of the same breed. So you want to know if anyone out of the 15 people have the same breed as your dog. You start with the first person and ask him if he has a golden retriever. He says no, then you ask the next person, and the next, and the next until you find someone who has a golden or there is no one else to ask.
+
+ANSWER: I think the Big O for this is linear time O(n) because I'm asking the question to each person in the room. So if there's 15 people in the room, it's going to take me 15 time units. If there's 30 people in the room, it's going to take me 30 time units.
