@@ -1,0 +1,48 @@
+1 - Derive an algorithm to solve the Tower of Hanoi puzzle.
+
+2 - Implement your algorithm using recursion. Your program should display each movement of the disk from one rod to another.
+rodA = [1, 2, 3]
+rodB = []
+rodC = []
+-----------------------
+rodA = [2, 3]
+rodB = []
+rodC = [1]
+-----------------------
+rodA = [3]
+rodB = [2]
+rodC = [1]
+-----------------------
+rodA = [3]
+rodB = [1, 2]
+rodC = []
+-----------------------
+rodA = []
+rodB = [1, 2] *RECURSIVE CALL HERE*
+rodC = [3]
+-----------------------
+rodA = [1]
+rodB = [2]
+rodC = [3]
+-----------------------
+rodA = [1]
+rodB = []
+rodC = [2, 3]
+-----------------------
+rodA = []
+rodB = []
+rodC = [1, 2, 3]
+
+3 - If you are given 5 disks, how do the rods look like after 7 recursive calls?
+                        -    
+----                    --
+-----                   ---
+ROD A       ROD B       ROD C
+
+4 - How many moves are needed to complete the puzzle with 3 disks? with 4 disks? with 5 disks?
+n = 3 ==> 7 moves
+n = 4 ==> 15 moves
+n = 5 ==> 31 moves
+
+5 - What is the runtime of your algorithm?
+The runtime of this algorithm is exponential because the number of operations grows exponentially as the input size increases. I also know that the number of moves it takes to move n disks is 2^n - 1 because I learned about this in the Berkeley museum of math and science.
