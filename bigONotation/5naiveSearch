@@ -1,0 +1,12 @@
+5. Naive search
+What is the Big O of the following algorithm? Explain your answer
+
+function naiveSearch(array, item) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === item) {
+            return i;
+        }
+    }
+}
+
+ANSWER: I think the Big O for this is linear time because the running time and input size are directly proportional. If there are only 2 elements, it will take 2 units of time to run. If there are 20 elements in the array, it will take 20 units of time because the function is looping through each element and checking something.
