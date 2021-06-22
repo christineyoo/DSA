@@ -1,0 +1,8 @@
+9. Random element
+What is the Big O of the following algorithm? Explain your answer
+
+function findRandomElement(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+ANSWER: The Big O for this algorithm is constant time O(1) because whether there are 5 elements or 500 elements in the array, it will take the same amount of time to find a random element.
