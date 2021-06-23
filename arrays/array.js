@@ -1,10 +1,10 @@
-const memory = require('./memory.js');
+const Memory = require('./memory.js');
 
 class Array {
   constructor() {
     this.length = 0;
     this._capacity = 0;
-    this.ptr = memory.allocate(this.length);
+    this.ptr = Memory.allocate(this.length);
   }
 
   push(value) {
@@ -12,19 +12,19 @@ class Array {
       this._resize((this.length + 1) * Array.SIZE_RATIO);
     }
 
-    memory.set(this.ptr + this.length, value);
+    Memory.set(this.ptr + this.length, value);
     this.length++;
   }
 
   _resize(size) {
     const oldPtr = this.ptr;
-    this.ptr = memory.allocate(size);
+    this.ptr = Memory.allocate(size);
     if (this.ptr === null) {
-      throw new Error('Out of memory');
+      throw new Error('Out of Memory');
     }
 
-    memory.copy(this.ptr, oldPtr, this.length);
-    memory.free(oldPtr);
+    Memory.copy(this.ptr, oldPtr, this.length);
+    Memory.free(oldPtr);
     this._capacity = size;
   }
 
@@ -33,7 +33,7 @@ class Array {
       throw new Error('Index error');
     }
 
-    return memory.get(this.ptr + index);
+    return Memory.get(this.ptr + index);
   }
 
   pop() {
@@ -41,7 +41,7 @@ class Array {
       throw new Error('Index error');
     }
 
-    const value = memory.get(this.ptr + this.length - 1);
+    const value = Memory.get(this.ptr + this.length - 1);
     this.length--;
     return value;
   }
@@ -54,8 +54,8 @@ class Array {
       this._resize((this.length + 1) * Array.SIZE_RATIO);
     }
 
-    memory.copy(this.ptr + index + 1, this.ptr + index, this.length - index);
-    memory.set(this.ptr + index, value);
+    Memory.copy(this.ptr + index + 1, this.ptr + index, this.length - index);
+    Memory.set(this.ptr + index, value);
     this.length++;
   }
 
@@ -64,7 +64,7 @@ class Array {
       throw new Error('Index error');
     }
 
-    memory.copy(
+    Memory.copy(
       this.ptr + index,
       this.ptr + index + 1,
       this.length - index - 1
