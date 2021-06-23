@@ -22,6 +22,7 @@ class Array {
     if (this.ptr === null) {
       throw new Error('Out of memory');
     }
+
     memory.copy(this.ptr, oldPtr, this.length);
     memory.free(oldPtr);
     this._capacity = size;
@@ -31,6 +32,7 @@ class Array {
     if (index < 0 || index >= this.length) {
       throw new Error('Index error');
     }
+
     return memory.get(this.ptr + index);
   }
 
@@ -38,6 +40,7 @@ class Array {
     if (this.length === 0) {
       throw new Error('Index error');
     }
+
     const value = memory.get(this.ptr + this.length - 1);
     this.length--;
     return value;
@@ -50,6 +53,7 @@ class Array {
     if (this.length >= this._capacity) {
       this._resize((this.length + 1) * Array.SIZE_RATIO);
     }
+
     memory.copy(this.ptr + index + 1, this.ptr + index, this.length - index);
     memory.set(this.ptr + index, value);
     this.length++;
@@ -59,6 +63,7 @@ class Array {
     if (index < 0 || index >= this.length) {
       throw new Error('Index error');
     }
+
     memory.copy(
       this.ptr + index,
       this.ptr + index + 1,
