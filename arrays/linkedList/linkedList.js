@@ -5,6 +5,8 @@ class _Node {
   }
 }
 
+module.exports = _Node;
+
 class LinkedList {
   constructor() {
     this.head = null;
@@ -62,3 +64,5 @@ class LinkedList {
     previousNode.next = currNode.next;
   }
 }
+
+module.exports = LinkedList;
