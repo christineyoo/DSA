@@ -17,3 +17,5 @@ function removeChars(string, badChar) {
 }
 
 removeChars('Battle', 'a');
+
+// Complexity is linear.
