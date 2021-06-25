@@ -71,6 +71,13 @@ class LinkedList {
     this.size++;
   }
 
+  insertAfter(item, index) {
+    if (index > this.size) {
+      return;
+    }
+    this.insertAt(item, index + 1);
+  }
+
   find(item) {
     let currNode = this.head;
     if (!this.head) {
@@ -123,6 +130,7 @@ SLL.insertLast('C');
 SLL.insertLast('D');
 // SLL.insertBefore('A.5', 'B');
 // SLL.insertAt('A1', 2);
-SLL.insertAt('A1', 3);
+// SLL.insertAt('A1', 3);
+SLL.insertAfter('C2', 2);
 
 SLL.printListData();
