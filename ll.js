@@ -29,24 +29,6 @@ class LinkedList {
     this.size++;
   }
 
-  insertBefore(nodeToInsert, nodeBefore) {
-    let currNode = this.head;
-    if (this.head === null) {
-      this.insertFirst(nodeToInsert);
-    }
-    if (nodeBefore.next === null) {
-      this.head = new _Node(nodeToInsert, nodeBefore);
-    }
-    while (currNode.next !== null) {
-      if (currNode.next.value === nodeBefore) {
-        currNode.next = new _Node(nodeToInsert, nodeBefore);
-      } else {
-        currNode = currNode.next;
-      }
-    }
-    this.size++;
-  }
-
   insertAt(item, index) {
     if (index > this.size) {
       return;
@@ -114,12 +96,29 @@ class LinkedList {
     previousNode.next = currNode.next;
   }
 
-  printListData() {
+  display() {
     let current = this.head;
     while (current) {
       console.log(current.value);
       current = current.next;
     }
+  }
+
+  listSize() {
+    const count = this.size;
+    console.log(count);
+  }
+
+  isEmpty() {
+    console.log(this.size === 0 ? true : false);
+  }
+
+  findLast() {
+    let current = this.head;
+    while (current.next !== null) {
+      current = current.next;
+    }
+    console.log(current.value);
   }
 }
 
@@ -128,9 +127,8 @@ SLL.insertFirst('A');
 SLL.insertLast('B');
 SLL.insertLast('C');
 SLL.insertLast('D');
-// SLL.insertBefore('A.5', 'B');
-// SLL.insertAt('A1', 2);
-// SLL.insertAt('A1', 3);
 SLL.insertAfter('C2', 2);
-
-SLL.printListData();
+SLL.display();
+SLL.listSize();
+SLL.isEmpty();
+SLL.findLast();

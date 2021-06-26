@@ -28,4 +28,4 @@ findNextFib(num1, num2) {
 "1, 1, 2, 3".concat(findNextFib(2, 3)) = 1, 1, 2, 3,
 ...
 
-The time complexity for this algorithm is linear because there is a direct proportion between the input size and the running time. If n = 2, then it takes 2 iterations. If n  = 4, then it takes 4 iterations.
+The time complexity for this algorithm is linear because there is a direct proportion between the input size and the running time. If n = 2, then it takes 2 iterations. If n = 4, then it takes 4 iterations.
