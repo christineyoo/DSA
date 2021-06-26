@@ -72,7 +72,7 @@ class LinkedList {
         currNode = currNode.next;
       }
     }
-    return currNode;
+    console.log(currNode);
   }
 
   remove(item) {
@@ -113,6 +113,16 @@ class LinkedList {
     console.log(this.size === 0 ? true : false);
   }
 
+  findPrevious(item) {
+    let prevNode = this.head;
+    let currNode = this.head;
+    while (currNode.value !== item) {
+      prevNode = currNode;
+      currNode = currNode.next;
+    }
+    console.log(prevNode);
+  }
+
   findLast() {
     let current = this.head;
     while (current.next !== null) {
@@ -129,6 +139,8 @@ SLL.insertLast('C');
 SLL.insertLast('D');
 SLL.insertAfter('C2', 2);
 SLL.display();
-SLL.listSize();
-SLL.isEmpty();
-SLL.findLast();
+// SLL.listSize();
+// SLL.isEmpty();
+// SLL.findLast();
+// SLL.find('C');
+SLL.findPrevious('C');
