@@ -55,13 +55,30 @@ class Stack {
       }
     }
   }
+
+  isPalindrome(string) {
+    string = string.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+    const length = string.length;
+    const mid = length / 2;
+    let stack = new Stack();
+    if (length % 2 !== 0) {
+      for (let i = 0; i < Math.floor(mid); i++) {
+        stack.push(string[i]);
+      }
+      for (let i = Math.floor(mid) + 1; i < string.length; i++) {
+        string[i] === stack.pop() ? console.log(`odd true`) : console.log(`odd false`);
+      }
+    } else {
+      for (let i = 0; i < mid; i++) {
+        stack.push(string[i]);
+      }
+      for (let i = mid; i < string.length; i++) {
+        string[i] === stack.pop() ? console.log(`even true`) : console.log(`even false`);
+      }
+    }
+  }
 }
 
-const stack = new Stack();
-stack.push('Kirk');
-stack.push('Spock');
-stack.push('McCoy');
-stack.push('Scotty');
-// stack.peek();
-// stack.isEmpty();
-stack.display();
+const s = new Stack();
+
+s.isPalindrome('tauhida');
