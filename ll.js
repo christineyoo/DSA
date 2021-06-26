@@ -132,19 +132,17 @@ class LinkedList {
   }
 
   reverse() {
-    let prevNode = this.head;
-    let currNode = this.head;
-    while (prevNode.next !== null) {
-      if ((currNode = this.head)) {
-        currNode.next = null;
-        prevNode.next.next = currNode;
-        currNode = currNode.next;
-      } else {
-        currNode.next = prevNode;
-        currNode = currNode.next;
-        prevNode = currNode;
-      }
+    let node = this.head;
+    let prev;
+    let temp;
+
+    while (node) {
+      temp = node.next;
+      node.next = prev;
+      prev = node;
+      node = temp;
     }
+    console.log(prev);
   }
 }
 
@@ -161,4 +159,3 @@ SLL.display();
 // SLL.find('C');
 // SLL.findPrevious('C');
 SLL.reverse();
-SLL.display();
