@@ -130,6 +130,22 @@ class LinkedList {
     }
     console.log(current.value);
   }
+
+  reverse() {
+    let prevNode = this.head;
+    let currNode = this.head;
+    while (prevNode.next !== null) {
+      if ((currNode = this.head)) {
+        currNode.next = null;
+        prevNode.next.next = currNode;
+        currNode = currNode.next;
+      } else {
+        currNode.next = prevNode;
+        currNode = currNode.next;
+        prevNode = currNode;
+      }
+    }
+  }
 }
 
 const SLL = new LinkedList();
@@ -143,4 +159,6 @@ SLL.display();
 // SLL.isEmpty();
 // SLL.findLast();
 // SLL.find('C');
-SLL.findPrevious('C');
+// SLL.findPrevious('C');
+SLL.reverse();
+SLL.display();
