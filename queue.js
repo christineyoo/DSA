@@ -34,6 +34,25 @@ class Queue {
     }
     return node.value;
   }
+
+  display() {
+    let current = this.first;
+    if (!current) {
+      return;
+    } else {
+      while (current) {
+        console.log(current.value);
+        current = current.next;
+      }
+    }
+  }
 }
 
-
+const q = new Queue();
+q.enqueque('kirk');
+q.enqueque('spock');
+q.enqueque('uhura');
+q.enqueque('sulu');
+q.enqueque('checkov');
+q.dequeue();
+q.display();

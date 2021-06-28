@@ -30,7 +30,7 @@ class Stack {
 
   peek() {
     let current = this.top;
-    if (this.top === null) {
+    if (!current) {
       return;
     }
     console.log(current.data);
