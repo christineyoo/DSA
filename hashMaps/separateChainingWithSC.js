@@ -14,6 +14,7 @@ class HashMapWithSC {
       return (this._hashTable[index].value);
     }
   
+    // I think I'm supposed to implement separate chaining somewhere in here?
     set(key, value) {
       const loadRatio = (this.length + this._deleted + 1) / this._capacity;
       if (loadRatio > HashMapWithSC.MAX_LOAD_RATIO) {
