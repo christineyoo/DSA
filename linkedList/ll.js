@@ -146,6 +146,8 @@ class LinkedList {
   }
 }
 
+module.exports = LinkedList;
+
 const SLL = new LinkedList();
 SLL.insertFirst('A');
 SLL.insertLast('B');

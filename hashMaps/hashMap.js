@@ -11,7 +11,7 @@ class HashMap {
     if (this._hashTable[index] === undefined) {
       throw new Error('Key error');
     }
-    return this._hashTable[index].value;
+    return (this._hashTable[index].value);
   }
 
   set(key, value) {
@@ -87,8 +87,13 @@ class HashMap {
   }
 
   display() {
-    console.log(this._hashTable);
+    console.log('hashTable', this._hashTable);
+    console.log('length', this.length);
+    console.log('capacity', this._capacity);
   }
 }
+
+HashMap.MAX_LOAD_RATIO = 0.5;
+HashMap.SIZE_RATIO = 3;
 
 module.exports = HashMap;
