@@ -1,4 +1,4 @@
-const HashMap = require('./hashMaps/hashMap');
+const HashMap = require('./hashMap');
 
 function main() {
   const lotr = new HashMap();

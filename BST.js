@@ -1,3 +1,5 @@
+const Queue = require('./stacksAndQueues/queue');
+
 class BinarySearchTree {
   constructor(key = null, value = null, parent = null) {
     this.key = key;
@@ -11,15 +13,18 @@ class BinarySearchTree {
     if (this.key == null) {
       this.key = key;
       this.value = value;
+      // console.log('key and value', key, value);
     } else if (key < this.key) {
       if (this.left == null) {
         this.left = new BinarySearchTree(key, value, this);
+        // console.log('key and value', key, value);
       } else {
-        this.left.insert(key, value);
+        // this.left.insert(key, value);
       }
     } else {
       if (this.right == null) {
         this.right = new BinarySearchTree(key, value, this);
+        // console.log('key and value', key, value);
       } else {
         this.right.insert(key, value);
       }
@@ -90,6 +95,39 @@ class BinarySearchTree {
     }
     return this.left._findMin();
   }
+
+  dfs(values = []) {
+    // if a left child exists
+    if (this.left) {
+      values = this.left.dfs(values); //set the values array ..?
+      console.log('values', values);
+    }
+    values.push(this.value);
+    if (this.right) {
+      values = this.right.dfs(values);
+    }
+    console.log(values);
+  }
+
+  bfs(tree, values = []) {
+    const queue = new Queue(); // Assuming a Queue is implemented (refer to previous lesson on Queue)
+    const node = tree.root;
+    queue.enqueue(node);
+    while (queue.length) {
+      const node = queue.dequeue(); //remove from the queue
+      values.push(node.value); // add that value from the queue to an array
+
+      if (node.left) {
+        queue.enqueue(node.left); //add left child to the queue
+      }
+
+      if (node.right) {
+        queue.enqueue(node.right); // add right child to the queue
+      }
+    }
+
+    return values;
+  }
 }
 
 function findHeight2(node) {
@@ -141,15 +179,17 @@ function isBST(t) {
 }
 
 const bst = new BinarySearchTree();
-bst.insert(3);
-bst.insert(1);
-bst.insert(4);
-bst.insert(6);
-bst.insert(9);
-bst.insert(2);
-bst.insert(5);
-bst.insert(7);
+bst.insert(3, 'C');
+bst.insert(1, 'A');
+bst.insert(4, 'D');
+bst.insert(6, 'F');
+bst.insert(9, 'I');
+bst.insert(10, 'J');
+bst.insert(2, 'B');
+bst.insert(5, 'E');
+bst.insert(7, 'G');
 
 // console.log(bst);
 // findHeight(bst);
-isBST(bst);
+// isBST(bst);
+bst.bfs(bst);
