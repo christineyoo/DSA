@@ -17,6 +17,7 @@ function main() {
   lotr.display();
   lotr.get('Maiar');
   lotr.get('Hobbit');
+  console.log(lotr);
 }
 
 // main();
