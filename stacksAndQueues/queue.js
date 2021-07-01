@@ -9,9 +9,11 @@ class Queue {
   constructor() {
     this.first = null;
     this.last = null;
+    this.length = 0;
   }
 
-  enqueque(data) {
+  enqueue(data) {
+    this.length++;
     const node = new _Node(data);
     if (this.first === null) {
       this.first = node;
@@ -24,6 +26,7 @@ class Queue {
   }
 
   dequeue() {
+    this.length--;
     if (this.first === null) {
       return; //if the queue is empty, there is nothing to return
     }
@@ -48,11 +51,13 @@ class Queue {
   }
 }
 
-const q = new Queue();
-q.enqueque('kirk');
-q.enqueque('spock');
-q.enqueque('uhura');
-q.enqueque('sulu');
-q.enqueque('checkov');
-q.dequeue();
-q.display();
+module.exports = Queue;
+
+// const q = new Queue();
+// q.enqueue('kirk');
+// q.enqueue('spock');
+// q.enqueue('uhura');
+// q.enqueue('sulu');
+// q.enqueue('checkov');
+// q.dequeue();
+// q.display();
