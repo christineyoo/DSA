@@ -101,17 +101,18 @@ class BST {
     let result = [];
 
     const traverse = (node) => {
-      // if left child exists, go left again
+      // if left child exists, go left again until you hit the leftmost leaf node
       if (node.left) traverse(node.left);
       // capture root node value
+      console.log('result', result);
       result.push(node.value);
       // if right child exists, go right again
       if (node.right) traverse(node.right);
     };
 
-    traverse(this.root);
+    traverse(this.root);  //15
 
-    return result;
+    console.log(result);
   }
 
   // pre-order
@@ -200,7 +201,7 @@ bst.insert(39);
 
 // DFS!!!
 // in-order: 2, 3, 12, 15, 28, 36, 39
-//   bst.dfsInOrder()
+bst.dfsInOrder();
 
 // pre-order: 15, 3, 2, 12, 36, 28, 39
 //   bst.dfsPreOrder()
