@@ -96,3 +96,5 @@ function partition(array, start, end) {
 }
 
 console.log(quickSort([6, 3, 2, 5, 4]));
+
+console.log('hello');
