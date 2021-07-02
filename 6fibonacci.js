@@ -4,31 +4,29 @@
 // Input: num
 
 // Output:
-// 1,
-// 1, 1,
-// 1, 1, 2,
-// 1, 1, 2, 3,
-// 1, 1, 2, 3, 5,
-// 1, 1, 2, 3, 5, 8,
-// 1, 1, 2, 3, 5, 8, 13
+// n = 1 -> 0, 1
+// n = 2 -> 0, 1, 1,
+// n = 3 -> 0, 1, 1, 2,
+// n = 4 -> 0, 1, 1, 2, 3,
+// n = 5 -> 0, 1, 1, 2, 3, 5,
+// n = 6 -> 0, 1, 1, 2, 3, 5, 8,
+// n = 7 -> 0, 1, 1, 2, 3, 5, 8, 13
 
-// Input to each recursive call: a pair of numbers, the last two numbers of the sequence that was just produced.
+// Input to each recursive call:
 
 // Output of each recursive call: a sequence of fibonacci numbers until the nth iteration.
 
-function fib(num) {
-  if (num === 2) {
-    return 1;
-  }
-  return fib(num) + fib(num - 1);
+function fib(n) {
+  if (n < 2) return n;
+  return fib(n - 2) + fib(n - 1);
 }
 
-console.log(fib(3));
+console.log(fib(7));
 
 // "1,".concat(findNextFib(1)) = 1,
-// "1, 1".concat(findNextFib(1, 1)) = 1, 1,
+// "1, 1".concat(findNextFib(2)) = 1, 1,
 // "1, 1, 2".concat(findNExtFib(1, 2)) = 1, 1, 2,
 // "1, 1, 2, 3".concat(findNextFib(2, 3)) = 1, 1, 2, 3,
 // ...
 
-// The time complexity for this algorithm is linear because there is a direct proportion between the input size and the running time. If n = 2, then it takes 2 iterations. If n = 4, then it takes 4 iterations.
+// The time complexity for this algorithm is factorial because if we pass in an input of size n, the fib function is called for n-1 and n-2, and each of those are further broken down to smaller cases until we reach the base case. So we have (n-1)*(n-2)*(n-3)... which is = n!

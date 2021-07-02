@@ -26,6 +26,7 @@ function bubbleSort(array) {
 // MERGE SORT
 
 function merge(left, right, array) {
+  console.log(`merging ${left} and ${right}`);
   let leftIndex = 0;
   let rightIndex = 0;
   let outputIndex = 0;
@@ -53,6 +54,7 @@ function merge(left, right, array) {
 }
 
 function mergeSort(array) {
+  // console.log('mergeSort called', array);
   if (array.length <= 1) {
     return array;
   }
@@ -95,6 +97,7 @@ function partition(array, start, end) {
   return j;
 }
 
-console.log(quickSort([6, 3, 2, 5, 4]));
-
-console.log('hello');
+// console.log(quickSort([14, 17, 13, 15, 19, 10, 3, 16, 9, 12]));
+console.log(
+  mergeSort([21, 1, 26, 45, 29, 28, 2, 9, 16, 49, 39, 27, 43, 34, 46, 40])
+);
