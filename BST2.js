@@ -110,7 +110,7 @@ class BST {
       if (node.right) traverse(node.right);
     };
 
-    traverse(this.root);  //15
+    traverse(this.root); //15
 
     console.log(result);
   }
@@ -180,6 +180,20 @@ class BST {
 
     console.log(result);
   }
+
+  maxDepth(node) {
+    if (node == null) return 0;
+    else {
+      /* compute the depth of each subtree */
+      let lDepth = this.maxDepth(node.left);
+      let rDepth = this.maxDepth(node.right);
+
+      console.log(lDepth, rDepth);
+      /* use the larger one */
+      if (lDepth > rDepth) return lDepth + 1;
+      else return rDepth + 1;
+    }
+  }
 }
 
 const bst = new BST(15);
@@ -191,8 +205,9 @@ bst.insert(12);
 bst.insert(28);
 bst.insert(39);
 
-// bst.size();
-
+bst.size();
+console.log(bst.root);
+bst.maxDepth(bst.root);
 // bst.min();
 // bst.max();
 
@@ -201,7 +216,7 @@ bst.insert(39);
 
 // DFS!!!
 // in-order: 2, 3, 12, 15, 28, 36, 39
-bst.dfsInOrder();
+// bst.dfsInOrder();
 
 // pre-order: 15, 3, 2, 12, 36, 28, 39
 //   bst.dfsPreOrder()
@@ -212,3 +227,5 @@ bst.dfsInOrder();
 // BFS!!!
 // 15, 3, 36, 2, 12, 28, 39
 // bst.bfs();
+
+// console.log(bst.maxDepth());
