@@ -1,5 +1,4 @@
-let count = 1;
-function findChar(s) {
+function findMostRepeatedChar(s) {
   const newS = s
     .toLowerCase()
     .replace(/[,.;:'"?!`]/g, '')
@@ -16,4 +15,20 @@ function findChar(s) {
   return obj;
 }
 
-console.log(findChar('Hello! I`m Christine!'));
+const wordOccurances = (sentence) => {
+  const wordArr = sentence.replace(/[,.;:?"'!]/g, '').split(' ');
+
+  let obj = {};
+  for (let i = 0; i < wordArr.length; i++) {
+    if (!obj[wordArr[i]]) {
+      obj[wordArr[i]] = 1;
+    } else {
+      obj[wordArr[i]]++;
+    }
+  }
+  return obj;
+};
+
+console.log(wordOccurances('The sky is blue, and my favorite color is blue!'));
+
+// console.log(findMostRepeatedChar('Hello! I`m Christine!'));
