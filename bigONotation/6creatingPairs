@@ -8,4 +8,4 @@ function createPairs(arr) {
     }
 }
 
-ANSWER: I think the Big O for this one is polynomial time O(n^k) because nested loops are present.
+ANSWER: I think the Big O for this one is quadratic time O(n^2) because nested loops are present.

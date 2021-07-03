@@ -12,4 +12,4 @@ function areYouHere(arr1, arr2) {
     return false;
 }
 
-ANSWER: I think the Big O for this one is polynomial time O(n^k) because there is a nested loop.
+ANSWER: I think the Big O for this one is quadratic time O(n^2) because there is a nested loop.
