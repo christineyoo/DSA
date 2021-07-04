@@ -30,41 +30,44 @@ class LinkedList {
   }
 
   insertAt(item, index) {
-    if (index > this.size) {
-      return;
-    }
-    if (index === 0) {
-      this.insertFirst(item);
-      return;
-    }
+    if (index > this.size) return;
+    if (index === 0) return this.insertFirst(item);
 
     const node = new _Node(item);
     let previous;
-    let current = this.head;
+    let currNode = this.head;
     let count = 0;
 
     while (count < index) {
-      previous = current; //node before index
-      current = current.next; //node after index
+      previous = currNode; //node before index
+      currNode = currNode.next; //node after index
       count++;
     }
-    node.next = current; //the newly inserted node points to the node after index
+    node.next = currNode; //the newly inserted node points to the node after index
     previous.next = node; //the previous node points to the newly inserted node
     this.size++;
   }
 
   insertAfter(item, index) {
-    if (index > this.size) {
-      return;
-    }
+    if (index > this.size) return;
     this.insertAt(item, index + 1);
+  }
+
+  findNthNode(index) {
+    if (!this.head) return null;
+    if (index > this.size) return null;
+    let currNode = this.head;
+    let count = 1;
+    while (count < index) {
+      currNode = currNode.next;
+      count++;
+    }
+    return currNode;
   }
 
   find(item) {
     let currNode = this.head;
-    if (!this.head) {
-      return null;
-    }
+    if (!this.head) return null;
     while (currNode.value !== item) {
       if (currNode.next === null) {
         return null;
@@ -72,7 +75,7 @@ class LinkedList {
         currNode = currNode.next;
       }
     }
-    console.log(currNode);
+    return currNode;
   }
 
   remove(item) {
@@ -89,21 +92,19 @@ class LinkedList {
       previousNode = currNode;
       currNode = currNode.next;
     }
-    if (currNode === null) {
-      console.log('Item not found');
-      return;
-    }
+    if (currNode === null) return `Item not found`;
     previousNode.next = currNode.next;
   }
 
   display() {
-    let current = this.head;
-    while (current) {
-      console.log(current.value);
-      current = current.next;
+    let currNode = this.head;
+    while (currNode) {
+      console.log(currNode.value);
+      currNode = currNode.next;
     }
   }
 
+  // other functions
   listSize() {
     const count = this.size;
     console.log(count);
@@ -150,14 +151,11 @@ module.exports = LinkedList;
 
 const SLL = new LinkedList();
 SLL.insertFirst('A');
-SLL.insertLast('B');
-SLL.insertLast('C');
-SLL.insertLast('D');
-SLL.insertAfter('C2', 2);
-// SLL.display();
-// SLL.listSize();
-// SLL.isEmpty();
-// SLL.findLast();
-SLL.find('C');
-// SLL.findPrevious('C');
-SLL.reverse();
+SLL.insertAt('C', 1);
+SLL.insertAt('D', 2);
+SLL.insertAt('B', 3);
+SLL.insertAt('F', 4);
+SLL.insertAt('K', 5);
+
+SLL.display();
+console.log(SLL.findNthNode(20));
