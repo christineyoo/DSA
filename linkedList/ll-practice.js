@@ -60,8 +60,8 @@ class LinkedList {
       } else {
         currNode = currNode.next;
       }
-      return currNode;
     }
+    return currNode;
   }
 
   display() {
@@ -72,6 +72,7 @@ class LinkedList {
     }
   }
 }
+
 const SLL = new LinkedList();
 SLL.insertFirst('A');
 SLL.insertLast('B');

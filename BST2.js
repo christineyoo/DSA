@@ -177,8 +177,7 @@ class BST {
         queue.enqueue(currentNode.right);
       }
     }
-
-    console.log(result);
+    return result;
   }
 
   maxDepth(node) {
@@ -188,7 +187,7 @@ class BST {
       let lDepth = this.maxDepth(node.left);
       let rDepth = this.maxDepth(node.right);
 
-      console.log(lDepth, rDepth);
+      // console.log(lDepth, rDepth);
       /* use the larger one */
       if (lDepth > rDepth) return lDepth + 1;
       else return rDepth + 1;
@@ -206,7 +205,7 @@ bst.insert(28);
 bst.insert(39);
 
 bst.size();
-console.log(bst.root);
+// console.log(bst.root);
 bst.maxDepth(bst.root);
 // bst.min();
 // bst.max();
@@ -226,6 +225,6 @@ bst.maxDepth(bst.root);
 
 // BFS!!!
 // 15, 3, 36, 2, 12, 28, 39
-// bst.bfs();
+console.log(bst.bfs());
 
 // console.log(bst.maxDepth());
