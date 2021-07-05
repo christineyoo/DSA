@@ -41,9 +41,14 @@ class LinkedList {
       currNode = currNode.next;
       count++;
     }
-    node.next = currNode;
     previous.next = node;
+    node.next = currNode;
     this.size++;
+  }
+
+  insertAfter(item, index) {
+    if (index > this.size) return;
+    this.insertAt(item, index + 1);
   }
 
   display() {
@@ -60,5 +65,6 @@ SLL.insertFirst('A');
 SLL.insertLast('B');
 SLL.insertLast('C');
 SLL.insertFirst('1');
-SLL.insertAt('Third', 3);
+SLL.insertAt('3rdIdx', 3);
+SLL.insertAfter('after A', 1);
 SLL.display();
