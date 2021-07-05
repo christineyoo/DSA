@@ -51,6 +51,19 @@ class LinkedList {
     this.insertAt(item, index + 1);
   }
 
+  find(item) {
+    let currNode = this.head;
+    if (!this.head) return null;
+    while (currNode.value !== item) {
+      if (currNode.next === null) {
+        return null;
+      } else {
+        currNode = currNode.next;
+      }
+      return currNode;
+    }
+  }
+
   display() {
     let currNode = this.head;
     while (currNode) {
@@ -59,7 +72,6 @@ class LinkedList {
     }
   }
 }
-
 const SLL = new LinkedList();
 SLL.insertFirst('A');
 SLL.insertLast('B');
@@ -67,4 +79,5 @@ SLL.insertLast('C');
 SLL.insertFirst('1');
 SLL.insertAt('3rdIdx', 3);
 SLL.insertAfter('after A', 1);
+console.log('find', SLL.find('A'));
 SLL.display();
