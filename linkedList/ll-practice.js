@@ -29,6 +29,23 @@ class LinkedList {
     this.size++;
   }
 
+  insertAt(item, index) {
+    if (index > this.size) return;
+    if (index === 0) return this.insertFirst(item);
+    const node = new _Node(item);
+    let previous;
+    let currNode = this.head;
+    let count = 0;
+    while (count < index) {
+      previous = currNode;
+      currNode = currNode.next;
+      count++;
+    }
+    node.next = currNode;
+    previous.next = node;
+    this.size++;
+  }
+
   display() {
     let currNode = this.head;
     while (currNode) {
@@ -40,7 +57,8 @@ class LinkedList {
 
 const SLL = new LinkedList();
 SLL.insertFirst('A');
-SLL.insertLast('Z');
-SLL.insertLast('1');
-SLL.insertFirst('G');
+SLL.insertLast('B');
+SLL.insertLast('C');
+SLL.insertFirst('1');
+SLL.insertAt('Third', 3);
 SLL.display();
