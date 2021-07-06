@@ -1,4 +1,4 @@
-// node, ll, insertFirst, insertLast, display, insertAt, insertAfter, find
+// node, ll, insertFirst, insertLast, display, insertAt, insertAfter, find, findNodeAt
 class _Node {
   constructor(value, next = null) {
     this.value = value;
@@ -9,14 +9,15 @@ class _Node {
 class LinkedList {
   constructor() {
     this.head = null;
-    this.size = 0;
+    this.size++;
   }
 
+  // insertFirst
   insertFirst(item) {
     this.head = new _Node(item, this.head);
     this.size++;
   }
-
+  // insertLast
   insertLast(item) {
     if (!this.head) {
       this.insertFirst(item);
@@ -29,10 +30,18 @@ class LinkedList {
     }
     this.size++;
   }
-
+  // display
+  display() {
+    let currNode = this.head;
+    while (currNode) {
+      console.log(currNode.value);
+      currNode = currNode.next;
+    }
+  }
+  // insertAt
   insertAt(item, index) {
     if (index > this.size) return;
-    if (index === 0) return this.inseretFirst(item);
+    if (index === 0) return this.insertFirst(item);
     const node = new _Node(item);
     let previous;
     let currNode = this.head;
@@ -46,15 +55,15 @@ class LinkedList {
     node.next = currNode;
     this.size++;
   }
-
+  // insertAfter
   insertAfter(item, index) {
     if (index > this.size) return;
     this.insertAt(item, index + 1);
   }
-
+  // find
   find(item) {
-    let currNode = this.head;
     if (!this.head) return null;
+    let currNode = this.head;
     while (currNode.value !== item) {
       if (currNode.next === null) {
         return null;
@@ -64,24 +73,36 @@ class LinkedList {
     }
     return currNode;
   }
-
+  // findNodeAt
   findNodeAt(index) {
-    if (!this.head || index > this.size) return null;
+    // if (!this.head || index > this.size) return null;
     let currNode = this.head;
     let count = 0;
     while (count < index) {
-      currNode = currNode.next;
-      count++;
+      if (currNode.next === null) {
+        return null;
+      } else {
+        currNode = currNode.next;
+        count++;
+      }
     }
     return currNode;
   }
 
-  display() {
+  remove(item) {
+    if (!this.head) return null;
+    if (this.head.value === item) {
+      this.head = this.head.next;
+      return;
+    }
     let currNode = this.head;
-    while (currNode) {
-      console.log(currNode.value);
+    let previousNode = this.head;
+    while (currNode !== null && currNode.value !== item) {
+      previousNode = currNode;
       currNode = currNode.next;
     }
+    if (currNode === null) return `Item not found`;
+    previousNode.next = currNode.next;
   }
 }
 
@@ -92,6 +113,7 @@ SLL.insertLast('C');
 SLL.insertFirst('D');
 SLL.insertAt('G', 3);
 SLL.insertAfter('after A', 1);
-// console.log('find', SLL.find('A'));
-console.log('findNodeAt', SLL.findNodeAt(2));
+// console.log('find', SLL.find('C'));
+// console.log('findNodeAt', SLL.findNodeAt(2));
+SLL.remove('after A');
 SLL.display();
