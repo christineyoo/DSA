@@ -1,3 +1,4 @@
+// node, ll, insertFirst, insertLast, display, insertAt, insertAfter, find
 class _Node {
   constructor(value, next = null) {
     this.value = value;
@@ -31,7 +32,7 @@ class LinkedList {
 
   insertAt(item, index) {
     if (index > this.size) return;
-    if (index === 0) return this.insertFirst(item);
+    if (index === 0) return this.inseretFirst(item);
     const node = new _Node(item);
     let previous;
     let currNode = this.head;
@@ -64,6 +65,17 @@ class LinkedList {
     return currNode;
   }
 
+  findNodeAt(index) {
+    if (!this.head || index > this.size) return null;
+    let currNode = this.head;
+    let count = 0;
+    while (count < index) {
+      currNode = currNode.next;
+      count++;
+    }
+    return currNode;
+  }
+
   display() {
     let currNode = this.head;
     while (currNode) {
@@ -77,8 +89,9 @@ const SLL = new LinkedList();
 SLL.insertFirst('A');
 SLL.insertLast('B');
 SLL.insertLast('C');
-SLL.insertFirst('1');
-SLL.insertAt('3rdIdx', 3);
+SLL.insertFirst('D');
+SLL.insertAt('G', 3);
 SLL.insertAfter('after A', 1);
-console.log('find', SLL.find('A'));
+// console.log('find', SLL.find('A'));
+console.log('findNodeAt', SLL.findNodeAt(2));
 SLL.display();
