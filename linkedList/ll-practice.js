@@ -108,14 +108,66 @@ class LinkedList {
   }
 }
 
-const SLL = new LinkedList();
-SLL.insertFirst('A');
-SLL.insertLast('B');
-SLL.insertLast('C');
-SLL.insertFirst('D');
-SLL.insertAt('G', 3);
-SLL.insertAfter('after A', 1);
-console.log('find', SLL.find('C'));
-console.log('findNodeAt', SLL.findNodeAt(2));
-SLL.remove('after A');
-SLL.display();
+function compare(listA, listB) {
+  let lA = listA.head;
+  let lB = listB.head;
+  let countA = 0;
+  let countB = 0;
+  while (lA || lB) {
+    if (lA === null) {
+      return -1;
+    } else if (lB === null) {
+      return 1;
+    } else if (lA.value === lB.value) {
+      lA = lA.next;
+      lB = lB.next;
+    } else if (lA.value > lB.value) {
+      countA++;
+      lA = lA.next;
+      lB = lB.next;
+    } else {
+      countB++;
+      lA = lA.next;
+      lB = lB.next;
+    }
+  }
+  if (countA === countB) {
+    return 0;
+  } else if (countA > countB) {
+    return 1;
+  } else {
+    return -1;
+  }
+}
+
+// const SLL = new LinkedList();
+// SLL.insertFirst('A');
+// SLL.insertLast('B');
+// SLL.insertLast('C');
+// SLL.insertFirst('D');
+// SLL.insertAt('G', 3);
+// SLL.insertAfter('after A', 1);
+// console.log('find', SLL.find('C'));
+// console.log('findNodeAt', SLL.findNodeAt(2));
+// SLL.remove('after A');
+// SLL.display();
+
+// list A: Bilboa
+const llA = new LinkedList();
+llA.insertFirst('B');
+llA.insertLast('i');
+llA.insertLast('l');
+llA.insertLast('b');
+llA.insertLast('o');
+llA.insertLast('a');
+
+// list B: Bilbob
+const llB = new LinkedList();
+llB.insertFirst('B');
+llB.insertLast('i');
+llB.insertLast('l');
+llB.insertLast('b');
+llB.insertLast('o');
+llB.insertLast('b');
+
+console.log(compare(llA, llB));
