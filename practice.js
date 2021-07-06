@@ -72,10 +72,39 @@ function palindromeCount(s) {
   return `${palArr} ${palArr.length} palindromes`;
 }
 
-// console.log(deleteDuplicates([1, 3, 3, 6, 7, 2, 6]));
+function mode(str) {
+  const s = str
+    .replace(/[, ]/g, ' ')
+    .split(' ')
+    .filter((e) => e !== '')
+    .map((e) => +e)
+    .sort((a, b) => a - b);
+  // console.log(s);
+  let modeObj = {};
+  for (let i = 0; i < s.length; i++) {
+    if (!modeObj[s[i]]) {
+      modeObj[s[i]] = 1;
+    } else {
+      modeObj[s[i]]++;
+    }
+  }
 
-console.log(palindromeCount('Dad gave mom a Tesla as a racecar'));
+  const digits = Object.keys(modeObj);
+  const frequencies = Object.values(modeObj);
+
+  let currMax = frequencies[0];
+  let index;
+  for (let i = 0; i < frequencies.length; i++) {
+    if (frequencies[i] > currMax) {
+      currMax = frequencies[i];
+      index = i;
+    }
+  }
+  return `Mode = ${digits[index]}, Frequency of Mode = ${frequencies[index]}`;
+}
 
 // console.log(wordOccurances('The the sky is blue, and my favorite color is blue!'));
-
 // console.log(findMostRepeatedChar('Hello! I`m Christine!'));
+// console.log(deleteDuplicates([1, 3, 3, 6, 7, 2, 6]));
+// console.log(palindromeCount('Dad gave mom a Tesla as a racecar'));
+console.log(mode(`1, 2, 3, 6, 10, 3, 5, 6, 3, 3`));
