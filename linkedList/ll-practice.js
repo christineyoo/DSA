@@ -9,15 +9,16 @@ class _Node {
 class LinkedList {
   constructor() {
     this.head = null;
-    this.size++;
+    this.size = 0;
   }
 
-  // insertFirst
+  // insertFirst: this head -> new node(item, head)
   insertFirst(item) {
     this.head = new _Node(item, this.head);
     this.size++;
   }
-  // insertLast
+
+  // insertLast: if !head, this.insertFirst. else, let tempNode = head. While tempNode.next !null, traverse through nodes. At the end of the loop, tempNode.next = new node (item, null).increment size;
   insertLast(item) {
     if (!this.head) {
       this.insertFirst(item);
@@ -30,7 +31,8 @@ class LinkedList {
     }
     this.size++;
   }
-  // display
+
+  // display: let currNode = head; while currNode => console.log(value) traverse through nodes
   display() {
     let currNode = this.head;
     while (currNode) {
@@ -38,7 +40,8 @@ class LinkedList {
       currNode = currNode.next;
     }
   }
-  // insertAt
+
+  // insertAt: if index > size, if index = 0; const node, let previous, currNode, count. while count < index, previous = curr, curr = curr.next, count++; once out of the loop, set prev.next = node, node.next = curr, this.size++
   insertAt(item, index) {
     if (index > this.size) return;
     if (index === 0) return this.insertFirst(item);
@@ -55,12 +58,13 @@ class LinkedList {
     node.next = currNode;
     this.size++;
   }
-  // insertAfter
+
+  // insertAfter: if index> size, return. this.insertAt (index + 1)
   insertAfter(item, index) {
     if (index > this.size) return;
     this.insertAt(item, index + 1);
   }
-  // find
+  // find: if !this.head return null. let curr = head. while (curr.value !== item), if (currNode.next == null) return null. Otherwise, keep looping through. At the end, return the currnode.
   find(item) {
     if (!this.head) return null;
     let currNode = this.head;
@@ -73,36 +77,34 @@ class LinkedList {
     }
     return currNode;
   }
-  // findNodeAt
+
+  // findNodeAt: if !head or if index > size, return null. let curr = head. let count = 0; while (count < index), make currnode the next one and count++. at the end, return the currnode.
   findNodeAt(index) {
-    // if (!this.head || index > this.size) return null;
+    if (!this.head || index > this.size) return null;
     let currNode = this.head;
     let count = 0;
     while (count < index) {
-      if (currNode.next === null) {
-        return null;
-      } else {
-        currNode = currNode.next;
-        count++;
-      }
+      currNode = currNode.next;
+      count++;
     }
     return currNode;
   }
 
+  // remove: if !head, return null. if the root value is the item, then set the head as the next head. let previous, curr. while (curr not null and curr value not item) set previous to the currnode and currnode to the next one. At the end of the loop, if curr is null, return 'not found'. forge new linkage with prev.next = currnode.next
   remove(item) {
     if (!this.head) return null;
     if (this.head.value === item) {
       this.head = this.head.next;
       return;
     }
+    let previous;
     let currNode = this.head;
-    let previousNode = this.head;
     while (currNode !== null && currNode.value !== item) {
-      previousNode = currNode;
+      previous = currNode;
       currNode = currNode.next;
     }
-    if (currNode === null) return `Item not found`;
-    previousNode.next = currNode.next;
+    if (currNode === null) return `Not found`;
+    previous.next = currNode.next;
   }
 }
 
@@ -113,7 +115,7 @@ SLL.insertLast('C');
 SLL.insertFirst('D');
 SLL.insertAt('G', 3);
 SLL.insertAfter('after A', 1);
-// console.log('find', SLL.find('C'));
-// console.log('findNodeAt', SLL.findNodeAt(2));
+console.log('find', SLL.find('C'));
+console.log('findNodeAt', SLL.findNodeAt(2));
 SLL.remove('after A');
 SLL.display();
