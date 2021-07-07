@@ -1,4 +1,3 @@
-// node, ll, insertFirst, insertLast, display, insertAt, insertAfter, find, findNodeAt
 class _Node {
   constructor(value, next = null) {
     this.value = value;
@@ -12,13 +11,11 @@ class LinkedList {
     this.size = 0;
   }
 
-  // insertFirst: this head -> new node(item, head)
   insertFirst(item) {
     this.head = new _Node(item, this.head);
     this.size++;
   }
 
-  // insertLast: if !head, this.insertFirst. else, let tempNode = head. While tempNode.next !null, traverse through nodes. At the end of the loop, tempNode.next = new node (item, null).increment size;
   insertLast(item) {
     if (!this.head) {
       this.insertFirst(item);
@@ -32,16 +29,6 @@ class LinkedList {
     this.size++;
   }
 
-  // display: let currNode = head; while currNode => console.log(value) traverse through nodes
-  display() {
-    let currNode = this.head;
-    while (currNode) {
-      console.log(currNode.value);
-      currNode = currNode.next;
-    }
-  }
-
-  // insertAt: if index > size, if index = 0; const node, let previous, currNode, count. while count < index, previous = curr, curr = curr.next, count++; once out of the loop, set prev.next = node, node.next = curr, this.size++
   insertAt(item, index) {
     if (index > this.size) return;
     if (index === 0) return this.insertFirst(item);
@@ -59,12 +46,11 @@ class LinkedList {
     this.size++;
   }
 
-  // insertAfter: if index> size, return. this.insertAt (index + 1)
   insertAfter(item, index) {
     if (index > this.size) return;
     this.insertAt(item, index + 1);
   }
-  // find: if !this.head return null. let curr = head. while (curr.value !== item), if (currNode.next == null) return null. Otherwise, keep looping through. At the end, return the currnode.
+
   find(item) {
     if (!this.head) return null;
     let currNode = this.head;
@@ -78,7 +64,6 @@ class LinkedList {
     return currNode;
   }
 
-  // findNodeAt: if !head or if index > size, return null. let curr = head. let count = 0; while (count < index), make currnode the next one and count++. at the end, return the currnode.
   findNodeAt(index) {
     if (!this.head || index > this.size) return null;
     let currNode = this.head;
@@ -90,7 +75,6 @@ class LinkedList {
     return currNode;
   }
 
-  // remove: if !head, return null. if the root value is the item, then set the head as the next head. let previous, curr. while (curr not null and curr value not item) set previous to the currnode and currnode to the next one. At the end of the loop, if curr is null, return 'not found'. forge new linkage with prev.next = currnode.next
   remove(item) {
     if (!this.head) return null;
     if (this.head.value === item) {
@@ -103,8 +87,17 @@ class LinkedList {
       previous = currNode;
       currNode = currNode.next;
     }
-    if (currNode === null) return `Not found`;
+    if (currNode === null) return `item not found`;
     previous.next = currNode.next;
+    this.size--;
+  }
+
+  display() {
+    let currNode = this.head;
+    while (currNode) {
+      console.log(currNode.value);
+      currNode = currNode.next;
+    }
   }
 }
 
@@ -140,34 +133,36 @@ function compare(listA, listB) {
   }
 }
 
-// const SLL = new LinkedList();
-// SLL.insertFirst('A');
-// SLL.insertLast('B');
-// SLL.insertLast('C');
-// SLL.insertFirst('D');
-// SLL.insertAt('G', 3);
-// SLL.insertAfter('after A', 1);
-// console.log('find', SLL.find('C'));
-// console.log('findNodeAt', SLL.findNodeAt(2));
-// SLL.remove('after A');
-// SLL.display();
+const SLL = new LinkedList();
+SLL.insertFirst('A');
+SLL.insertLast('B');
+SLL.insertLast('C');
+SLL.insertFirst('D');
+SLL.insertAt('G', 3);
+SLL.insertAfter('after A', 1);
+console.log('find', SLL.find('C'));
+console.log('findNodeAt', SLL.findNodeAt(2));
+SLL.remove('after A');
+SLL.display();
+console.log(SLL.size);
 
 // list A: Bilboa
 const llA = new LinkedList();
-llA.insertFirst('B');
+llA.insertFirst('c');
+llA.insertLast('h');
 llA.insertLast('i');
 llA.insertLast('l');
-llA.insertLast('b');
-llA.insertLast('o');
-llA.insertLast('a');
+llA.insertLast('d');
+// llA.insertLast('r');
+// llA.insertLast('e');
+// llA.insertLast('n');
 
 // list B: Bilbob
 const llB = new LinkedList();
-llB.insertFirst('B');
+llB.insertFirst('c');
+llB.insertLast('h');
 llB.insertLast('i');
 llB.insertLast('l');
-llB.insertLast('b');
-llB.insertLast('o');
-llB.insertLast('b');
+llB.insertLast('l');
 
-console.log(compare(llA, llB));
+// console.log(compare(llA, llB));

@@ -1,0 +1,71 @@
+Node class
+(value, next = null)
+
+LinkedList class
+this.head, this.size
+
+inserFirst
+this head = new Node(item, this.head);
+
+insertLast
+if !head -> {
+    this.insertFirst
+} else
+tempnode. Make the tempnode traverse through as long as .next ! null.
+Then set the tempNode.next to the new node. (item, null);
+
+insertAt(item, index)
+check if index > this.size, return.
+if index = 0, use insertFirst
+const new node.
+let previous.
+let currNode, let count.
+while count < index {
+    previous = curr;
+    curr = next;
+    count++
+}
+prev.next  = node, node.next = curr, this.size++
+
+insertAfter(item, index) {
+    if index > this.size, return
+    then use insertAt.
+}
+
+find(item)
+if !head return null.
+let currNode be the head.
+while currNode.vale != item {
+    if currnode.next == null, return null. otherwise, keep traversing through.
+}
+return currNode.
+
+findNodeAt(index)
+check if !head || index > this.size return null.
+let currNode  =head;
+let count = 0;
+while (count <index) {
+    currNode.next,
+    count++
+}
+return currNode;
+
+remove(item) {
+    if !this.head return null;
+    let prev;
+    let currNode = head;
+    while (curRNode != null && currNode.value != item) {
+        prev = currNode;
+        curRNode = next
+    }
+    if (currNode is null) return item not found
+    prev.next = currnode.next;
+}
+
+display {
+    let currnode = head
+    while (currnode) {
+        console log(value);
+        currnode to next.
+    }
+}
