@@ -65,7 +65,7 @@ class LinkedList {
   }
 
   findNodeAt(index) {
-    if (!this.head || index > this.size) return null;
+    if (index > this.size || !this.head) return null;
     let currNode = this.head;
     let count = 0;
     while (count < index) {
@@ -100,39 +100,6 @@ class LinkedList {
     }
   }
 }
-
-function compare(listA, listB) {
-  let lA = listA.head;
-  let lB = listB.head;
-  let countA = 0;
-  let countB = 0;
-  while (lA || lB) {
-    if (lA === null) {
-      return -1;
-    } else if (lB === null) {
-      return 1;
-    } else if (lA.value === lB.value) {
-      lA = lA.next;
-      lB = lB.next;
-    } else if (lA.value > lB.value) {
-      countA++;
-      lA = lA.next;
-      lB = lB.next;
-    } else {
-      countB++;
-      lA = lA.next;
-      lB = lB.next;
-    }
-  }
-  if (countA === countB) {
-    return 0;
-  } else if (countA > countB) {
-    return 1;
-  } else {
-    return -1;
-  }
-}
-
 const SLL = new LinkedList();
 SLL.insertFirst('A');
 SLL.insertLast('B');
@@ -141,7 +108,7 @@ SLL.insertFirst('D');
 SLL.insertAt('G', 3);
 SLL.insertAfter('after A', 1);
 console.log('find', SLL.find('C'));
-console.log('findNodeAt', SLL.findNodeAt(2));
+console.log('findNodeAt', SLL.findNodeAt(3));
 SLL.remove('after A');
 SLL.display();
 console.log(SLL.size);

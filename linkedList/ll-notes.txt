@@ -60,6 +60,7 @@ remove(item) {
     }
     if (currNode is null) return item not found
     prev.next = currnode.next;
+    this.size--
 }
 
 display {
