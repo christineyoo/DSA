@@ -3,8 +3,9 @@
 const Queue = require('./stacksAndQueues/queue');
 
 class Node {
-  constructor(value) {
+  constructor(value, next = null) {
     this.value = value;
+    this.next = next;
     this.left = null;
     this.right = null;
   }
@@ -17,14 +18,12 @@ class BST {
   }
 
   size() {
-    console.log('size', this.count);
+    // console.log('size', this.count);
   }
 
   insert(value) {
     this.count++;
-
     let newNode = new Node(value);
-
     const searchTree = (node) => {
       // if value < node.value, go left
       if (value < node.value) {
@@ -193,6 +192,18 @@ class BST {
       else return rDepth + 1;
     }
   }
+
+  isValidBST() {
+    let currNode = this.root;
+    while (currNode.next !== null) {
+      if (!currNode.left && !currNode.right) return null;
+      else if (currNode.left && currNode.right) {
+        currNode.left.value > currNode.right.value ? console.log('false') : console.log('true');
+      } else {
+        currNode.value > currNode.left.value ? console.log('true') : console.log('false');
+      }
+    }
+  }
 }
 
 const bst = new BST(15);
@@ -225,6 +236,7 @@ bst.maxDepth(bst.root);
 
 // BFS!!!
 // 15, 3, 36, 2, 12, 28, 39
-console.log(bst.bfs());
+// console.log(bst.bfs());
 
 // console.log(bst.maxDepth());
+console.log(bst.isValidBST());

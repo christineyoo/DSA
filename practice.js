@@ -103,8 +103,22 @@ function mode(str) {
   return `Mode = ${digits[index]}, Frequency of Mode = ${frequencies[index]}`;
 }
 
+// take in an array.
+// set the answer to an initial value [0]
+// loop through the array, comparing if a[i] < a[i] + a[i+1]. If true, set answer to the the greater value.
+// also compare which is the max between answer and
+const findLargestSum = (arr) => {
+  let answer = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    arr[i] = Math.max(arr[i], arr[i] + arr[i - 1]);
+    answer = Math.max(arr[i], answer);
+  }
+  return answer;
+};
+
 // console.log(wordOccurances('The the sky is blue, and my favorite color is blue!'));
 // console.log(findMostRepeatedChar('Hello! I`m Christine!'));
 // console.log(deleteDuplicates([1, 3, 3, 6, 7, 2, 6]));
 // console.log(palindromeCount('Dad gave mom a Tesla as a racecar'));
-console.log(mode(`1, 2, 3, 6, 10, 3, 5, 6, 3, 3`));
+// console.log(mode(`1, 2, 3, 6, 10, 3, 5, 6, 3, 3`));
+console.log(findLargestSum([0, 3, 5, -1]));

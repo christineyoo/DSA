@@ -164,16 +164,14 @@ function findHeight(node) {
   console.log('Max Height is: ', maxHeight);
 }
 
-function isBST(t) {
+function isValidBST(t) {
   while (t) {
     if (!t.left && !t.right) {
-      return console.log('null');
+      return null;
     } else if (t.left && t.right) {
-      t.left.value > t.right.value ? console.log('true') : console.log('false');
+      t.left.value > t.right.value ? true : false;
     } else {
-      this.parent.value > t.left.value
-        ? console.log('true')
-        : console.log('false');
+      this.parent.value > t.left.value ? true : false;
     }
   }
 }
@@ -191,5 +189,5 @@ bst.insert(7, 'G');
 
 // console.log(bst);
 // findHeight(bst);
-// isBST(bst);
-bst.bfs(bst);
+console.log(isValidBST(bst));
+// bst.bfs(bst);
