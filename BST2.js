@@ -3,9 +3,8 @@
 const Queue = require('./stacksAndQueues/queue');
 
 class Node {
-  constructor(value, next = null) {
+  constructor(value) {
     this.value = value;
-    this.next = next;
     this.left = null;
     this.right = null;
   }
@@ -18,7 +17,7 @@ class BST {
   }
 
   size() {
-    // console.log('size', this.count);
+    console.log('size', this.count);
   }
 
   insert(value) {
@@ -65,21 +64,18 @@ class BST {
 
   max() {
     let currentNode = this.root;
-
     // continue traversing right until no more children
     while (currentNode.right) {
       currentNode = currentNode.right;
     }
-
     console.log('max', currentNode.value);
   }
 
   contains(value) {
     let currentNode = this.root;
-
     while (currentNode) {
       if (value === currentNode.value) {
-        return console.log('true');
+        return true;
       }
       if (value < currentNode.value) {
         currentNode = currentNode.left;
@@ -87,77 +83,60 @@ class BST {
         currentNode = currentNode.right;
       }
     }
-
-    return console.log('false');
+    return false;
   }
 
   // depth first search - branch by branch
 
-  // in-order
+  // IN-ORDER
   // left, root, right
-  // 2, 3, 12, 15, 28, 36, 39
+  // if left child exists, go left again until you hit the leftmost leaf node
+  // capture root node value
+  // if right child exists, go right again
   dfsInOrder() {
     let result = [];
-
     const traverse = (node) => {
-      // if left child exists, go left again until you hit the leftmost leaf node
       if (node.left) traverse(node.left);
-      // capture root node value
-      console.log('result', result);
       result.push(node.value);
-      // if right child exists, go right again
       if (node.right) traverse(node.right);
     };
-
     traverse(this.root); //15
-
-    console.log(result);
-  }
-
-  // pre-order
-  // root, left, right
-  // 15, 3, 2, 12, 36, 28, 39
-  dfsPreOrder() {
-    let result = [];
-
-    const traverse = (node) => {
-      // capture root node value
-      result.push(node.value);
-      // if left child exists, go left again
-      if (node.left) traverse(node.left);
-      // if right child exists, go right again
-      if (node.right) traverse(node.right);
-    };
-
-    traverse(this.root);
-
     return result;
   }
 
-  // post-order
+  // PRE-ORDER
+  // root, left, right
+  // capture root node value
+  // if left child exists, go left again
+  // if right child exists, go right again
+  dfsPreOrder() {
+    let result = [];
+    const traverse = (node) => {
+      result.push(node.value);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    };
+    traverse(this.root);
+    return result;
+  }
+
+  // POST-ORDER
   // left, right, root
-  // 2, 12, 3, 28, 39, 36, 15
+  // if left child exists, go left again
+  // if right child exists, go right again
+  // capture root node value
   dfsPostOrder() {
     let result = [];
-
     const traverse = (node) => {
-      // if left child exists, go left again
       if (node.left) traverse(node.left);
-      // if right child exists, go right again
       if (node.right) traverse(node.right);
-      // capture root node value
       result.push(node.value);
     };
-
     traverse(this.root);
-
     return result;
   }
 
   // breadth first search - level by level
-
-  // use a queue!
-  // 15, 3, 36, 2, 12, 28, 39
   bfs() {
     let result = [];
     let queue = new Queue();
@@ -166,9 +145,7 @@ class BST {
 
     while (queue.length) {
       let currentNode = queue.dequeue();
-
       result.push(currentNode.value);
-
       if (currentNode.left) {
         queue.enqueue(currentNode.left);
       }
@@ -193,40 +170,44 @@ class BST {
     }
   }
 
-  isValidBST() {
-    let currNode = this.root;
-    while (currNode.next !== null) {
-      if (!currNode.left && !currNode.right) return null;
-      else if (currNode.left && currNode.right) {
-        currNode.left.value > currNode.right.value ? console.log('false') : console.log('true');
-      } else {
-        currNode.value > currNode.left.value ? console.log('true') : console.log('false');
-      }
+  isValidBST(root) {
+    function helper(node, min, max) {
+      if (!node) return true;
+      if (node.value <= min || node.value >= max) return false;
+      let left = helper(node.left, min, node.value);
+      let right = helper(node.right, node.value, max);
+      return left && right;
     }
+    return helper(root, -Infinity, Infinity);
   }
 }
 
+//      15
+//     /  \
+//    3    36
+//   / \   / \
+//  2  12 28 39
 const bst = new BST(15);
 
-bst.insert(3);
+bst.insert(100);
 bst.insert(36);
 bst.insert(2);
 bst.insert(12);
 bst.insert(28);
 bst.insert(39);
 
-bst.size();
+// bst.size();
 // console.log(bst.root);
-bst.maxDepth(bst.root);
+// bst.maxDepth(bst.root);
 // bst.min();
 // bst.max();
 
-//   bst.contains(2)
-//   bst.contains(9)
+// console.log(bst.contains(2));
+// console.log(bst.contains(9));
 
 // DFS!!!
 // in-order: 2, 3, 12, 15, 28, 36, 39
-// bst.dfsInOrder();
+// console.log(bst.dfsInOrder());
 
 // pre-order: 15, 3, 2, 12, 36, 28, 39
 //   bst.dfsPreOrder()
