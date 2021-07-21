@@ -68,6 +68,23 @@ const sumWithoutRepeats = (limit) => {
   return sum;
 };
 
-console.log(sum(18));
-//3, 6, 9, 12, 15 18
-//5, 10, 15
+const calculateGrade = (marks) => {
+  const average = Math.ceil(marks.reduce((a, b) => a + b) / marks.length);
+  if (average >= 90 && average <= 100) return 'A';
+  else if (average >= 80 && average <= 89) return 'B';
+  else if (average >= 70 && average <= 79) return 'C';
+  else if (average >= 60 && average <= 69) return 'D';
+  else return 'F';
+};
+
+const showStars = (rows) => {
+  for (let i = 1; i <= rows; i++) {
+    console.log('*'.repeat(i));
+  }
+};
+
+//rows is a number.
+//start a for loop. it's going to start at 1 and then iterate until i = rows.
+//at each iteration, console.log string.repeat(i)
+
+showStars(10);
