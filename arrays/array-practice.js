@@ -83,8 +83,16 @@ const showStars = (rows) => {
   }
 };
 
-//rows is a number.
-//start a for loop. it's going to start at 1 and then iterate until i = rows.
-//at each iteration, console.log string.repeat(i)
+const showPrimes = (limit) => {
+  for (let number = 2; number <= limit; number++) {
+    if (isPrime(number)) console.log(number);
+  }
+};
 
-showStars(10);
+function isPrime(number) {
+  for (let factor = 2; factor < number; factor++) {
+    if (number % factor === 0) return false;
+  }
+  return true;
+}
+
