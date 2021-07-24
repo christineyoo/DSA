@@ -116,9 +116,23 @@ const findLargestSum = (arr) => {
   return answer;
 };
 
+const showAddress = (object) => {
+  for (let key in object) {
+    console.log(`${key}: ${object[key]}`);
+  }
+};
+
+const myAddress = {
+  street: '4931 Parkhurst Dr',
+  city: 'Baton Rouge',
+  zipcode: 70714
+};
+
+showAddress(myAddress);
+
 // console.log(wordOccurances('The the sky is blue, and my favorite color is blue!'));
 // console.log(findMostRepeatedChar('Hello! I`m Christine!'));
 // console.log(deleteDuplicates([1, 3, 3, 6, 7, 2, 6]));
 // console.log(palindromeCount('Dad gave mom a Tesla as a racecar'));
 // console.log(mode(`1, 2, 3, 6, 10, 3, 5, 6, 3, 3`));
-console.log(findLargestSum([0, 3, 5, -1]));
+// console.log(findLargestSum([0, 3, 5, -1]));
