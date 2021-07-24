@@ -128,7 +128,42 @@ const myAddress = {
   zipcode: 70714
 };
 
-showAddress(myAddress);
+class Address {
+  constructor(street, city, zipcode) {
+    this.street = street;
+    this.city = city;
+    this.zipcode = zipcode;
+  }
+
+  showAddress() {
+    const formattedAddress = `
+    Street: ${this.street}
+    City: ${this.city}
+    Zipcode: ${this.zipcode}
+    `;
+    return formattedAddress;
+  }
+}
+
+function areEqual(address1, address2) {
+  let result = false;
+  for (let key in address1) {
+    if (address1[key] !== address2[key]) return result;
+    else result = true;
+  }
+  return result;
+}
+
+function areSame(address1, address2) {
+  let result = false;
+    if (address1 !== address2) return result;
+    else result = true;
+  return result;
+}
+
+const address1 = new Address('4931 parkhurst drive', 'baton rouge', 70714);
+const address2 = new Address('4931 parkhurst drive', 'baton rouge', 70714);
+console.log(areSame(address1, address2));
 
 // console.log(wordOccurances('The the sky is blue, and my favorite color is blue!'));
 // console.log(findMostRepeatedChar('Hello! I`m Christine!'));
