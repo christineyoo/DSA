@@ -116,18 +116,27 @@ const findLargestSum = (arr) => {
   return answer;
 };
 
+// console.log(wordOccurances('The the sky is blue, and my favorite color is blue!'));
+// console.log(findMostRepeatedChar('Hello! I`m Christine!'));
+// console.log(deleteDuplicates([1, 3, 3, 6, 7, 2, 6]));
+// console.log(palindromeCount('Dad gave mom a Tesla as a racecar'));
+// console.log(mode(`1, 2, 3, 6, 10, 3, 5, 6, 3, 3`));
+// console.log(findLargestSum([0, 3, 5, -1]));
+
 const showAddress = (object) => {
   for (let key in object) {
     console.log(`${key}: ${object[key]}`);
   }
 };
 
+// Exercise 1: Address Object
 const myAddress = {
   street: '4931 Parkhurst Dr',
   city: 'Baton Rouge',
   zipcode: 70714
 };
 
+// Exercise 2: Factory and Constructor Functions
 class Address {
   constructor(street, city, zipcode) {
     this.street = street;
@@ -145,6 +154,7 @@ class Address {
   }
 }
 
+// Exercise 3: Object equality
 function areEqual(address1, address2) {
   let result = false;
   for (let key in address1) {
@@ -156,18 +166,57 @@ function areEqual(address1, address2) {
 
 function areSame(address1, address2) {
   let result = false;
-    if (address1 !== address2) return result;
-    else result = true;
+  if (address1 !== address2) return result;
+  else result = true;
   return result;
 }
 
 const address1 = new Address('4931 parkhurst drive', 'baton rouge', 70714);
 const address2 = new Address('4931 parkhurst drive', 'baton rouge', 70714);
-console.log(areSame(address1, address2));
+const address3 = address1;
+// console.log(areSame(address1, address3));
 
-// console.log(wordOccurances('The the sky is blue, and my favorite color is blue!'));
-// console.log(findMostRepeatedChar('Hello! I`m Christine!'));
-// console.log(deleteDuplicates([1, 3, 3, 6, 7, 2, 6]));
-// console.log(palindromeCount('Dad gave mom a Tesla as a racecar'));
-// console.log(mode(`1, 2, 3, 6, 10, 3, 5, 6, 3, 3`));
-// console.log(findLargestSum([0, 3, 5, -1]));
+// Exercise 4: Blog post object
+let post = {
+  title: 'a',
+  body: 'b',
+  author: 'c',
+  views: 1,
+  comments: [
+    {
+      author: 'd',
+      body: 'e'
+    },
+    {
+      author: 'd2',
+      body: 'e2'
+    }
+  ],
+  isLive: true
+};
+
+// Exercise 5: Constructor functions
+class Post {
+  constructor(title, body, author) {
+    this.title = title;
+    this.body = body;
+    this.author = author;
+    this.views = 0;
+    this.comments = [];
+    this.isLive = false;
+  }
+}
+
+const newPost = new Post('title', 'hello', 'christine');
+
+//Exercise 6: Price Range Object
+let priceRanges = [
+  { label: '$', tooltip: 'Inexpensive', minPerPerson: 0, maxPerPerson: 10 },
+  { label: '$$', tooltip: 'Moderate', minPerPerson: 11, maxPerPerson: 20 },
+  { label: '$', tooltip: 'Expensive', minPerPerson: 21, maxPerPerson: 50 }
+];
+
+let restaurants = [
+  {averagePerPerson: 5}
+]
+
