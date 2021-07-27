@@ -1,4 +1,4 @@
-const Queue = require('./stacksAndQueues/queue');
+const Queue = require('../stacksAndQueues/queue');
 
 class BinarySearchTree {
   constructor(key = null, value = null, parent = null) {
