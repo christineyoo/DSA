@@ -55,7 +55,7 @@ class LinkedList {
     this.insertAt(item, index + 1);
   }
 
-  // find(item): if !head, return null. currNode = head; while the currNode' value is not the item, check if currNode.next is null, return null. Otherwise, keep traverse through the list by pointing to the next node. return the currNode.
+  // find(item): if !head, return null. currNode = head; while the currNode's value is not the item, check if currNode.next is null, return null. Otherwise, keep traverse through the list by pointing to the next node. return the currNode.
   find(item) {
     if (!this.head) return null;
     let currNode = this.head;
@@ -83,7 +83,7 @@ class LinkedList {
 
   // remove(item): check if !head, return null. if the head's value is the item, make the new head the node after the head. create variables to store the previous node and currNode. while curr is not null and value is not item, previous to the currnode, currnode keeps traverse to the next node. After the while loop, check if the currnode is null (return item not found);
   // previous points to the currNode.next;
-  // decremenet the size.
+  // decrement the size.
   remove(item) {
     if (!this.head) return null;
     if (this.head.value === item) {
