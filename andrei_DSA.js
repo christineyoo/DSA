@@ -90,8 +90,36 @@ const reverse2 = str => str.split('').reverse().join('');
 
 const reverse3 = str => [...str].reverse().join('');
 
-console.log(reverse3('green beans'))
+// console.log(reverse3('green beans'))
 
 //take a string and separate each char into an array element using .split();
 //start at the end of the array and push those characters onto a new array
 //.join them all together.
+
+//Create a function that takes two sorted arrays and merges them into one sorted array.
+//O(n + m) time | O(n + m) space
+function mergeSortedArrays(arr1, arr2) {
+    let ptrA = 0;
+    let ptrB = 0;
+    let result = [];
+    while (ptrA < arr1.length && ptrB < arr2.length) {
+        if (arr1[ptrA] < arr2[ptrB]) {
+            result.push(arr1[ptrA]);
+            ptrA++;
+        } else {
+            result.push(arr2[ptrB]);
+            ptrB++;
+        }
+    }
+    if (!arr2[ptrB]) result.push(arr1[ptrA]);
+    else if (!arr1[ptrA]) result.push(arr2[ptrB]);
+    return result;
+}
+
+console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
+//create two pointers. one for arr1, one for arr2, both starting at the 0th index.
+//compare the values at those indicies.
+//if the value at arr1 is lesser, then push it onto the new array. increment the pointer for arr1.
+//if the value at arr2 is lesser, then push that value onto the new array.incremenet the poitner for arr2.
+//we want to keep doing this until both pointers for arr1 and arr2 have reached the end of the array (&&, reached the length);
+//return the resulting array
