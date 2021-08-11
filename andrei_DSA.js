@@ -65,12 +65,33 @@ class MyArray {
   }
 }
 
-const newArray = new MyArray();
-console.log(newArray.get(0));
-newArray.push('hi');
-newArray.push('you');
-newArray.push('!');
-newArray.push('are');
-newArray.push('nice');
-newArray.delete(2);
-console.log(newArray);
+// const newArray = new MyArray();
+// console.log(newArray.get(0));
+// newArray.push('hi');
+// newArray.push('you');
+// newArray.push('!');
+// newArray.push('are');
+// newArray.push('nice');
+// newArray.delete(2);
+// console.log(newArray);
+
+//Create a function that reverses a string: 'Hi' => 'iH'
+// O(n) time | O(n) space where n is the # of characters in the string.
+function reverse(str) {
+    if (!str || str.length < 2 || typeof str !== 'string') return null;
+    let reversed = [];
+    for (let i = str.length - 1; i >= 0; i--) {
+        reversed.push(str[i]);
+    }
+    return reversed.join('');
+}
+
+const reverse2 = str => str.split('').reverse().join('');
+
+const reverse3 = str => [...str].reverse().join('');
+
+console.log(reverse3('green beans'))
+
+//take a string and separate each char into an array element using .split();
+//start at the end of the array and push those characters onto a new array
+//.join them all together.
