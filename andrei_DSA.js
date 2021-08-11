@@ -1,4 +1,4 @@
-const {performance} = require('perf_hooks');
+const { performance } = require('perf_hooks');
 
 // function findNemo(array) {
 //     let startTime = performance.now();
@@ -17,18 +17,60 @@ const array1 = ['a', 'b', 'c', 'x', 'a', 'b'];
 const array2 = ['z', 'y', 'g'];
 //O(n + m) time | O(n) - where n is the size of arr1, m is the size of arr2
 function containsCommonItem(arr1, arr2) {
-    let store = {};
-    for (const element of arr1) {
-        store[element] = true;
-    }
-    console.log(store);
-    for (const item of arr2) {
-        if (item in store) return true;
-    }
-    return false;
+  let store = {};
+  for (const element of arr1) {
+    store[element] = true;
+  }
+  console.log(store);
+  for (const item of arr2) {
+    if (item in store) return true;
+  }
+  return false;
 }
 
-console.log(containsCommonItem(array1, array2));
+class MyArray {
+  constructor() {
+    this.length = 0;
+    this.data = {};
+  }
 
-//loop through the first array and create a hastable.
-//loop through the second array and check if there is a match between that element and key in the hashtable
+  get(index) {
+    return this.data[index];
+  }
+
+  push(item) {
+    this.data[this.length] = item;
+    this.length++;
+    return this.length;
+  }
+
+  pop() {
+    const lastItem = this.data[this.length - 1];
+    delete this.data[this.length - 1];
+    this.length--;
+    return lastItem;
+  }
+
+  delete(index) {
+    const item = this.data[index];
+    this.shiftItems(index);
+  }
+
+  shiftItems(index) {
+    for (let i = index; i < this.length - 1; i++) {
+      this.data[i] = this.data[i + 1];
+    }
+    delete this.data[this.length - 1];
+    this.length--;
+  }
+}
+
+const newArray = new MyArray();
+console.log(newArray.get(0));
+newArray.push('hi');
+newArray.push('you');
+newArray.push('!');
+newArray.push('are');
+newArray.push('nice');
+newArray.delete(2);
+console.log(newArray);
