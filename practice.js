@@ -210,13 +210,13 @@ class Post {
 const newPost = new Post('title', 'hello', 'christine');
 
 //Exercise 6: Price Range Object
-let priceRanges = [
-  { label: '$', tooltip: 'Inexpensive', minPerPerson: 0, maxPerPerson: 10 },
-  { label: '$$', tooltip: 'Moderate', minPerPerson: 11, maxPerPerson: 20 },
-  { label: '$', tooltip: 'Expensive', minPerPerson: 21, maxPerPerson: 50 }
-];
+// let priceRanges = [
+//   { label: '$', tooltip: 'Inexpensive', minPerPerson: 0, maxPerPerson: 10 },
+//   { label: '$$', tooltip: 'Moderate', minPerPerson: 11, maxPerPerson: 20 },
+//   { label: '$', tooltip: 'Expensive', minPerPerson: 21, maxPerPerson: 50 }
+// ];
 
-let restaurants = [
-  {averagePerPerson: 5}
-]
+// let restaurants = [
+//   {averagePerPerson: 5}
+// ]
 
