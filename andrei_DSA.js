@@ -116,10 +116,28 @@ function mergeSortedArrays(arr1, arr2) {
     return result;
 }
 
-console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
+// console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
 //create two pointers. one for arr1, one for arr2, both starting at the 0th index.
 //compare the values at those indicies.
 //if the value at arr1 is lesser, then push it onto the new array. increment the pointer for arr1.
 //if the value at arr2 is lesser, then push that value onto the new array.incremenet the poitner for arr2.
 //we want to keep doing this until both pointers for arr1 and arr2 have reached the end of the array (&&, reached the length);
 //return the resulting array
+
+class HashTable {
+    constructor(size) {
+        this.data = new Array(size);
+    }
+
+    _hash(key) {
+        let hash = 0;
+        for (let i = 0; i < key.length; i++) {
+            hash = (hash + key.charCodeAt(i) * i) % this.data.length;
+        }
+        return hash;
+    }
+}
+
+const myHashTable = new HashTable(50);
+myHashTable.set('grapes', 10000);
+myHashTable.get('grapes');
