@@ -139,17 +139,27 @@ class HashTable {
 
     set(key, value) {
         const index = this._hash(key);
-        this.data[index] = [key, value];
-        console.log(this.data);
+        if (!this.data[index]) {
+            this.data[index] = [];
+        }
+        this.data[index].push([key, value])
+        return this.data;
     }
 
     get(key) {
         const index = this._hash(key);
-        return this.data[index]
+        const currBucket = this.data[index];
+        if (currBucket) {
+            for (let i = 0; i < currBucket.length; i++) {
+                if (currBucket[i][0] === key) return currBucket[i][1];
+            }
+        }
+        return undefined
     }
 }
 
-const myHashTable = new HashTable(50);
-myHashTable.set('grapes', 10000);
+const myHashTable = new HashTable(2);
+console.log(myHashTable.set('grapes', 10000))
+console.log(myHashTable.set('apples', 54))
 console.log(myHashTable.get('grapes'))
-console.log(myHashTable._hash('grapes'))
+// console.log(myHashTable._hash('grapes'))
