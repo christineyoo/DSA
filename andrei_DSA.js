@@ -78,17 +78,17 @@ class MyArray {
 //Create a function that reverses a string: 'Hi' => 'iH'
 // O(n) time | O(n) space where n is the # of characters in the string.
 function reverse(str) {
-    if (!str || str.length < 2 || typeof str !== 'string') return null;
-    let reversed = [];
-    for (let i = str.length - 1; i >= 0; i--) {
-        reversed.push(str[i]);
-    }
-    return reversed.join('');
+  if (!str || str.length < 2 || typeof str !== 'string') return null;
+  let reversed = [];
+  for (let i = str.length - 1; i >= 0; i--) {
+    reversed.push(str[i]);
+  }
+  return reversed.join('');
 }
 
-const reverse2 = str => str.split('').reverse().join('');
+const reverse2 = (str) => str.split('').reverse().join('');
 
-const reverse3 = str => [...str].reverse().join('');
+const reverse3 = (str) => [...str].reverse().join('');
 
 // console.log(reverse3('green beans'))
 
@@ -99,21 +99,21 @@ const reverse3 = str => [...str].reverse().join('');
 //Create a function that takes two sorted arrays and merges them into one sorted array.
 //O(n + m) time | O(n + m) space
 function mergeSortedArrays(arr1, arr2) {
-    let ptrA = 0;
-    let ptrB = 0;
-    let result = [];
-    while (ptrA < arr1.length && ptrB < arr2.length) {
-        if (arr1[ptrA] < arr2[ptrB]) {
-            result.push(arr1[ptrA]);
-            ptrA++;
-        } else {
-            result.push(arr2[ptrB]);
-            ptrB++;
-        }
+  let ptrA = 0;
+  let ptrB = 0;
+  let result = [];
+  while (ptrA < arr1.length && ptrB < arr2.length) {
+    if (arr1[ptrA] < arr2[ptrB]) {
+      result.push(arr1[ptrA]);
+      ptrA++;
+    } else {
+      result.push(arr2[ptrB]);
+      ptrB++;
     }
-    if (!arr2[ptrB]) result.push(arr1[ptrA]);
-    else if (!arr1[ptrA]) result.push(arr2[ptrB]);
-    return result;
+  }
+  if (!arr2[ptrB]) result.push(arr1[ptrA]);
+  else if (!arr1[ptrA]) result.push(arr2[ptrB]);
+  return result;
 }
 
 // console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
@@ -125,65 +125,89 @@ function mergeSortedArrays(arr1, arr2) {
 //return the resulting array
 
 class HashTable {
-    constructor(size) {
-        this.data = new Array(size);
-    }
+  constructor(size) {
+    this.data = new Array(size);
+  }
 
-    _hash(key) {
-        let hash = 0;
-        for (let i = 0; i < key.length; i++) {
-            hash = (hash + key.charCodeAt(i) * i) % this.data.length;
-        }
-        return hash;
+  _hash(key) {
+    let hash = 0;
+    for (let i = 0; i < key.length; i++) {
+      hash = (hash + key.charCodeAt(i) * i) % this.data.length;
     }
+    return hash;
+  }
 
-    set(key, value) {
-        const index = this._hash(key);
-        if (!this.data[index]) {
-            this.data[index] = [];
-        }
-        this.data[index].push([key, value])
-        return this.data;
+  set(key, value) {
+    const index = this._hash(key);
+    if (!this.data[index]) {
+      this.data[index] = [];
     }
+    this.data[index].push([key, value]);
+    return this.data;
+  }
 
-    get(key) {
-        const index = this._hash(key);
-        const currBucket = this.data[index];
-        if (currBucket) {
-            for (let i = 0; i < currBucket.length; i++) {
-                if (currBucket[i][0] === key) return currBucket[i][1];
-            }
-        }
-        return undefined
-    }
-
-    keys() {
-        if (!this.data.length) {
-          return undefined
-        }
-        let result = []
-        // loop through all the elements
-        for (let i = 0; i < this.data.length; i++) {
-            // if it's not an empty memory cell
-            if (this.data[i] && this.data[i].length) {
-              // but also loop through all the potential collisions
-              if (this.data.length > 1) {
-                for (let j = 0; j < this.data[i].length; j++) {
-                  result.push(this.data[i][j][0])
-                }
-              } else {
-                result.push(this.data[i][0])
-              } 
-            }
-        }
-        return result; 
+  get(key) {
+    const index = this._hash(key);
+    const currBucket = this.data[index];
+    if (currBucket) {
+      for (let i = 0; i < currBucket.length; i++) {
+        if (currBucket[i][0] === key) return currBucket[i][1];
       }
+    }
+    return undefined;
+  }
+
+  keys() {
+    if (!this.data.length) {
+      return undefined;
+    }
+    let result = [];
+    // loop through all the elements
+    for (let i = 0; i < this.data.length; i++) {
+      // if it's not an empty memory cell
+      if (this.data[i] && this.data[i].length) {
+        // but also loop through all the potential collisions
+        if (this.data.length > 1) {
+          for (let j = 0; j < this.data[i].length; j++) {
+            result.push(this.data[i][j][0]);
+          }
+        } else {
+          result.push(this.data[i][0]);
+        }
+      }
+    }
+    return result;
+  }
 }
 
-const myHashTable = new HashTable(50);
-myHashTable.set('grapes', 10000)
-myHashTable.set('apples', 54)
-myHashTable.set('oranges', 2)
+// const myHashTable = new HashTable(50);
+// myHashTable.set('grapes', 10000)
+// myHashTable.set('apples', 54)
+// myHashTable.set('oranges', 2)
 // myHashTable.get('grapes')
 // console.log(myHashTable._hash('grapes'))
-console.log(myHashTable.keys())
+// console.log(myHashTable.keys())
+
+//Given an array of integers, find the first reoccurring value.
+//input: [2, 5, 1, 2, 3, 5, 1, 2, 4]    //[2, 3, 4, 5]
+//output: 2                             //undefined
+
+//loop through the array. if that value has not appeared before, store its value in a hashTable '2': 1 (frequency)
+//if that value has appeared before, immediately return that key.
+
+//if even after looping through, it never hits the condition that this value has appeared before, return undefined.
+
+//O(n) time | O(n) space - n number of unique elements in the array
+const findReoccurring = (array) => {
+  const hashTable = {};
+  for (const value of array) {
+    if (!(value in hashTable)) {
+      hashTable[value] = 1;
+    } else if (value in hashTable) {
+        return value;
+    }
+  }
+  return undefined;
+};
+
+console.log(findReoccurring([2, 3, 4, 5, 3]));
