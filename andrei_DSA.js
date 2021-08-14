@@ -210,4 +210,4 @@ const findReoccurring = (array) => {
   return undefined;
 };
 
-console.log(findReoccurring([2, 3, 4, 5, 3]));
+console.log(findReoccurring([2,1, 1, 2, 3, 5, 1, 2, 4]));
