@@ -93,7 +93,19 @@ class LinkedList {
       }
 
       reverse() {
-
+        if (!this.head.next) return this.head;
+        let first = this.head;
+        this.tail = this.head;
+        let second = first.next;
+        while (second) {
+            const temp = second.next;
+            second.next = first;
+            first = second;
+            second = temp;
+        }
+        this.head.next = null;
+        this.head = first;
+        return this;
       }
 }
 
@@ -101,9 +113,10 @@ const ll = new LinkedList(10);
 ll.append(5);
 ll.append(16);
 ll.prepend(1);
-ll.insertAt(99, 2);
+// ll.insertAt(99, 2);
 // ll.insertAt(98, 200);
 // ll.remove(3);
+ll.reverse();
 console.log(ll.printList());
 console.log(ll);
 
