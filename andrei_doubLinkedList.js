@@ -1,17 +1,17 @@
 class Node {
     constructor(value) {
         this.value = value;
-        this.next = null
-        // this.previous = null
+        this.next = null,
+        this.previous = null
     }
 }
 
-class LinkedList {
+class DoublyLinkedList {
     constructor(value) {
         this.head = {
             value,
             next: null,
-            // previous: null
+            previous: null
         }
         this.tail = this.head;
         this.length = 1;
@@ -19,7 +19,7 @@ class LinkedList {
 
     append(value) {
         const newNode = new Node(value);
-        // newNode.previous = this.tail;
+        newNode.previous = this.tail;
         this.tail.next = newNode;
         this.tail = newNode;
         this.length++;
@@ -29,7 +29,7 @@ class LinkedList {
     prepend(value) {
         const newNode = new Node(value);
         newNode.next = this.head;
-        // this.head.previous = newNode;
+        this.head.previous = newNode;
         this.head = newNode;
         this.length++;
         return this;
@@ -52,9 +52,9 @@ class LinkedList {
       const leader = this.traverseToIndex(index - 1);
       const follower = leader.next;
       leader.next = newNode;
-    //   newNode.previous = leader;
+      newNode.previous = leader;
       newNode.next = follower;
-    //   follower.previous = newNode;
+      follower.previous = newNode;
       this.length++;
 
       return this;
@@ -91,13 +91,9 @@ class LinkedList {
           this.length--;
           return this.printList();
       }
-
-      reverse() {
-
-      }
 }
 
-const ll = new LinkedList(10);
+const ll = new DoublyLinkedList(10);
 ll.append(5);
 ll.append(16);
 ll.prepend(1);
@@ -106,4 +102,3 @@ ll.insertAt(99, 2);
 // ll.remove(3);
 console.log(ll.printList());
 console.log(ll);
-
