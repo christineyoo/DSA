@@ -5,6 +5,14 @@ class Node {
     }
 }
 
+class DubNode {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+        this.previous = null;
+    }
+}
+
 class LinkedList {
     constructor(value) {
         this.head = {
@@ -42,27 +50,56 @@ class LinkedList {
     }
 
     insertAt(value, index) {
-        if (index > this.length) return;
-        if (this.length === 0) return this.append(value);
-        
-        const newNode = new Node(value);
-        let currNode = this.head;
-        let prev;
-        let count = 0;
-        while (currNode !== null && count < index) {
-            prev = currNode;
-            currNode = currNode.next;
-            count++;
-        }
-        prev.next = newNode;
-        newNode.next = currNode;
-        this.length++;
+      if (index >= this.length) return this.append(value);
+
+      const newNode = new Node(value);
+      const leader = this.traverseToIndex(index - 1);
+      const holdingPointer = leader.next;
+      leader.next = newNode;
+      newNode.next = holdingPointer;
+      this.length++;
+
+      return this;
     }
+    
+    traverseToIndex(index) {
+          let counter = 0;
+          let currNode = this.head;
+          while (counter !== index) {
+              currNode = currNode.next;
+              counter++;
+          }
+          return currNode;
+      }
+
+      myremove(index) {
+          let currNode = this.head;
+          let previous;
+          let count = 0;
+          while (currNode !== null && count < index) {
+            previous = currNode;
+            currNode = currNode.next;  
+            count++
+          }
+          previous.next = currNode.next;
+          this.length--;
+          return this;
+      }
+
+      remove(index) {
+          const leader = this.traverseToIndex(index - 1);
+          const unwantedNode = leader.next;
+          leader.next = unwantedNode.next;
+          this.length--;
+          return this.printList();
+      }
 }
 
 const ll = new LinkedList(10);
 ll.append(5);
 ll.append(16);
 ll.prepend(1);
-ll.insertAt(15, 2);
+ll.insertAt(99, 2);
+ll.insertAt(98, 200);
+ll.remove(3);
 console.log(ll.printList());
