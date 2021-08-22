@@ -158,6 +158,7 @@ SLL.insertAt('F', 4);
 SLL.insertAt('K', 5);
 
 SLL.display();
+console.log(SLL);
 // SLL.reverse();
-console.log('hi', SLL.reverse());
-SLL.display();
+// console.log('hi', SLL.reverse());
+// SLL.display();
