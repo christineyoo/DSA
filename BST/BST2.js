@@ -1,6 +1,6 @@
 // BINARY SEARCH TREE from beiatrix
 
-const Queue = require('./stacksAndQueues/queue');
+const Queue = require('../stacksAndQueues/queue');
 
 class Node {
   constructor(value) {
@@ -187,14 +187,17 @@ class BST {
 //    3    36
 //   / \   / \
 //  2  12 28 39
-const bst = new BST(15);
+const bst = new BST(10);
 
-bst.insert(100);
-bst.insert(36);
+bst.insert(5);
+bst.insert(15);
 bst.insert(2);
-bst.insert(12);
-bst.insert(28);
-bst.insert(39);
+bst.insert(5);
+bst.insert(1);
+bst.insert(13);
+bst.insert(14);
+bst.insert(22);
+
 
 // bst.size();
 // console.log(bst.root);
@@ -207,7 +210,7 @@ bst.insert(39);
 
 // DFS!!!
 // in-order: 2, 3, 12, 15, 28, 36, 39
-// console.log(bst.dfsInOrder());
+console.log(bst.dfsInOrder());
 
 // pre-order: 15, 3, 2, 12, 36, 28, 39
 //   bst.dfsPreOrder()
