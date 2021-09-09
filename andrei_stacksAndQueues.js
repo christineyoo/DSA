@@ -16,48 +16,37 @@ class Stack {
     
     // look at the top node
     peek() {
-        console.log('Peekaboo', this.top);
+        return this.top;
     }
 
     //add a node to the top of the stack
     push(value) {
         const newNode = new Node(value);
         if (this.length === 0) {
+            this.top = newNode; 
             this.bottom = newNode;
-            this.top = newNode;
         } else {
-            let currNode = this.bottom;
-            let count = 1;
-            while (count < this.length) {
-                currNode = currNode.next;
-                count++;
-            }
-            currNode.next = newNode;
+            const currTop = this.top;
             this.top = newNode;
+            this.top.next = currTop;
         }
         this.length++;
-        // console.log(this);
+        return this;
     }
 
     //remove a node from the top
     pop() {
         let removedNode = this.top;
-
-        if (this.length <= 0) return;
+        
+        if (!this.top) return null;
         if (this.length === 1) {
+            this.top = null;
             this.bottom = null;
         } else {
-            let currNode = this.bottom;
-            let count = 1;
-            while (count < this.length - 1) {
-                currNode = currNode.next;
-                count++;
-            }
-            currNode.next = removedNode.next;
-            this.top = currNode;
+            this.top = removedNode.next;
         }
         this.length--;
-        // console.log(this);
+        return this;
     }
 }
 
@@ -65,6 +54,9 @@ const myStack =  new Stack();
 myStack.push('google');
 myStack.push('udemy');
 myStack.push('discord');
-console.log('before pop', myStack)
+// console.log(myStack)
 myStack.pop();
-myStack.peek();
+myStack.pop();
+myStack.pop();
+console.log(myStack);
+// myStack.peek();
