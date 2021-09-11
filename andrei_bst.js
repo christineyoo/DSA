@@ -34,6 +34,22 @@ class BinarySearchTree {
            }
        }
     }
+
+    // returns the value if it's found, otherwise return null
+    lookup(value) {
+        if (!this.root) return null;
+        let currentNode = this.root;
+        while (currentNode) {
+            if (value < currentNode.value) {
+                currentNode = currentNode.left;
+            } else if (value > currentNode.value) {
+                currentNode = currentNode.right;
+            } else {
+                return currentNode;
+            }
+        }
+        return null;
+    }
 }
 
 const traverse = (node) => {
@@ -51,4 +67,4 @@ bst.insert(20);
 bst.insert(170);
 bst.insert(15);
 bst.insert(1);
-console.log(JSON.stringify(traverse(bst.root)));
+console.log(bst.lookup(20));
