@@ -62,9 +62,9 @@ class Graph {
       let connections = '';
       let vertex;
       for (vertex of nodeConnections) {
-        connections += vertex + '';
+        connections += vertex + ' ';
       }
-      console.log(node + '-->' + connections);
+      console.log(node + '--> ' + connections);
     }
   }
 }
@@ -78,4 +78,6 @@ myGraph.addVertex('4');
 myGraph.addVertex('5');
 myGraph.addVertex('6');
 myGraph.addEdge('2', '1');
+myGraph.addEdge('2', '4');
+
 myGraph.showConnections();
