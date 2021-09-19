@@ -6,12 +6,11 @@
 
 //Create a tic-tac-toe class with a .move method. Do this in O(1) time
 
-function factorial(number, answer = number) {
-  if (number === 1) {
-    return answer;
+function factorial(number) {
+  if (number === 2) {
+    return 2;
   }
-  answer *= number - 1; //answer = 120*1=120
-  return factorial(number - 1, answer); //factorial(1, 120)
+  return number * factorial(number - 1); //factorial(1, 120)
 }
 
 function factorialIterative(number) {
@@ -21,6 +20,14 @@ function factorialIterative(number) {
   }
   return answer;
 }
+
+function fib(number) {
+    if (number === 1) return 1;
+    if (number === 0) return 0;
+    return fib(number - 1) + fib(number - 2); //fib(4) + fib(3)
+}                                             //  0, 1, 1, 2, 3, 5, 8
+
+console.log(fib(7));
 
 console.log(factorialIterative(5));
 console.log('factorial recursive', factorial(5));
