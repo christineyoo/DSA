@@ -10,7 +10,7 @@ function factorial(number) {
   if (number === 2) {
     return 2;
   }
-  return number * factorial(number - 1); //factorial(1, 120)
+  return number * factorial(number - 1);
 }
 
 function factorialIterative(number) {
@@ -24,10 +24,21 @@ function factorialIterative(number) {
 function fib(number) {
     if (number === 1) return 1;
     if (number === 0) return 0;
-    return fib(number - 1) + fib(number - 2); //fib(4) + fib(3)
-}                                             //  0, 1, 1, 2, 3, 5, 8
+    return fib(number - 1) + fib(number - 2);
+}                                             
+
+function fibIterative(number) {
+    let fibs = [0, 1];
+    let sum = 0;
+    for (let i = 1; i < number; i++) {
+            sum = fibs[0] + fibs[1]
+            fibs[0] = fibs[1];
+            fibs[1] = sum;
+    }
+    return number === 0 ? fibs[0] : fibs[1];
+}
 
 console.log(fib(7));
-
+console.log('fib iterative', fibIterative(7))
 console.log(factorialIterative(5));
 console.log('factorial recursive', factorial(5));
