@@ -22,8 +22,7 @@ function factorialIterative(number) {
 }
 
 function fib(number) {
-    if (number === 1) return 1;
-    if (number === 0) return 0;
+    if (number < 2) return number;
     return fib(number - 1) + fib(number - 2);
 }                                             
 
