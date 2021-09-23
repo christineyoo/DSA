@@ -161,6 +161,51 @@ class BinarySearchTree {
     }
     return this.breadthFirstSearchR(queue, list);
   }
+
+  DFSInOrder() {
+    return traverseInOrder(this.root, []);
+  }
+
+  DFSPostOrder() {
+    return traversePostOrder(this.root, []);
+  }
+
+  DFSPreOrder() {
+    return traversePreOrder(this.root, []);
+  }
+}
+
+function traverseInOrder(node, list) {
+  if (node.left) {
+    traverseInOrder(node.left, list);
+  }
+  list.push(node.value);
+  if (node.right) {
+    traverseInOrder(node.right, list);
+  }
+  return list;
+}
+
+function traversePreOrder(node, list) {
+  list.push(node.value);
+  if (node.left) {
+    traversePreOrder(node.left, list);
+  }
+  if (node.right) {
+    traversePreOrder(node.right, list);
+  }
+  return list;
+}
+
+function traversePostOrder(node, list) {
+  if (node.left) {
+    traversePostOrder(node.left, list);
+  }
+  if (node.right) {
+    traversePostOrder(node.right, list);
+  }
+  list.push(node.value);
+  return list;
 }
 
 const traverse = (node) => {
@@ -179,7 +224,10 @@ bst.insert(170);
 bst.insert(15);
 bst.insert(1);
 // console.log(bst.breadthFirstSearch());
-console.log(bst.breadthFirstSearchR([bst.root], []));
+// console.log(bst.breadthFirstSearchR([bst.root], []));
+console.log('in order', bst.DFSInOrder());
+console.log('pre order', bst.DFSPreOrder());
+console.log('post order', bst.DFSPostOrder());
 
 // console.log(bst.lookup(20));
 
