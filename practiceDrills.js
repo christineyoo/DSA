@@ -145,9 +145,32 @@ function calculateArea(arr, left, right) {
   return width * height
 }
 
-console.log('expecting 1 and returns ', findMaxWater([1, 1]))
-console.log('expecting 2 and returns ', findMaxWater([1, 2, 1]))
-console.log('expecting 16 and returns', findMaxWater([4, 3, 2, 1, 4]))
-console.log('expecting 49 and returns', findMaxWater([1, 8, 6, 2, 5, 4, 8, 3, 7]))
-console.log('expecting 50 and returns', findMaxWater([1, 8, 10, 2, 5, 4, 8, 10, 7]))
-console.log('expecting 100 and returns', findMaxWater([1, 8, 10, 100, 100, 4, 8, 10, 7]))
+// console.log('expecting 1 and returns ', findMaxWater([1, 1]))
+// console.log('expecting 2 and returns ', findMaxWater([1, 2, 1]))
+// console.log('expecting 16 and returns', findMaxWater([4, 3, 2, 1, 4]))
+// console.log('expecting 49 and returns', findMaxWater([1, 8, 6, 2, 5, 4, 8, 3, 7]))
+// console.log('expecting 50 and returns', findMaxWater([1, 8, 10, 2, 5, 4, 8, 10, 7]))
+// console.log('expecting 100 and returns', findMaxWater([1, 8, 10, 100, 100, 4, 8, 10, 7]))
+
+function threeSum(array, targetSum) {
+  array.sort((a, b) => a - b);
+  let result = [];
+
+  for (let mainPtr = 0; mainPtr < array.length - 2; mainPtr++) {
+    let leftPtr = mainPtr + 1;
+    let rightPtr = array.length - 1;
+    while (leftPtr < rightPtr) {
+      let currSum = array[mainPtr] + array[leftPtr] + array[rightPtr];
+      if (currSum < targetSum) {
+        leftPtr++;
+      } else if (currSum > targetSum) {
+        rightPtr--;
+      } else {
+          result.push([array[mainPtr], array[leftPtr], array[rightPtr]]);
+      }
+    }
+  }
+  return result;
+}
+
+console.log("sorted", threeSum([12, 3, 1, 2, -6, 5, -8, 6], 0))
